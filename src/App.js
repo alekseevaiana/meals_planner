@@ -1,10 +1,19 @@
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "./Home";
+import CreateMeal from "./CreateMeal";
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+        </Routes>
+        <Routes>
+          <Route exact path="/new_meal" element={<CreateMeal />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
