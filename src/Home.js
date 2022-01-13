@@ -4,6 +4,7 @@ import MealsList from "./MealsList";
 export default function Home({ meals }) {
   return (
     <>
+      {console.log(meals, "mealsData", new Date())}
       <Box
         sx={{
           p: 2,
