@@ -1,11 +1,7 @@
-import { Route, Routes } from "react-router-dom";
-import { Box, BottomNavigation } from "@mui/material";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import RestoreIcon from "@mui/icons-material/Restore";
-import { meals } from "./data.js";
+import { Box } from "@mui/material";
 import MealsList from "./MealsList";
 
-export default function Home() {
+export default function Home({ meals }) {
   return (
     <>
       <Box
