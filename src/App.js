@@ -12,18 +12,15 @@ function App() {
   const navigate = useNavigate();
 
   const handleIngridientInput = (e) => {
-    console.log(e.target.value);
     setInputIngridient(e.target.value);
   };
 
   const handleIngridientNameInput = (e) => {
-    console.log(e.target.value);
     setInputIngridientName(e.target.value);
   };
 
   const handleAddIngridient = () => {
-    const new_ingridient = inputIngridient;
-    setIngridients([...ingridients, new_ingridient]);
+    setIngridients([...ingridients, inputIngridient]);
     setInputIngridient("");
   };
 
@@ -43,9 +40,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/" element={<Home meals={mealsData} />} />
-      </Routes>
-      <Routes>
+        <Route exact path="*" element={<Home meals={mealsData} />} />
         <Route
           exact
           path="/new_meal"

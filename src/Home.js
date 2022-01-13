@@ -1,5 +1,7 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import { Routes, Route, Link } from "react-router-dom";
 import MealsList from "./MealsList";
+import PlanMealsList from "./PlanMealsList";
 
 export default function Home({ meals }) {
   return (
@@ -12,7 +14,16 @@ export default function Home({ meals }) {
           height: "100vh",
         }}
       >
-        <MealsList meals={meals} />
+        <Link to="/">
+          <Typography>Meals</Typography>
+        </Link>
+        <Link to="/plan">
+          <Typography>Plan</Typography>
+        </Link>
+        <Routes>
+          <Route exact path="/" element={<MealsList meals={meals} />} />
+          <Route path="/plan" element={<PlanMealsList />} />
+        </Routes>
       </Box>
     </>
   );
