@@ -4,6 +4,7 @@ import MealsList from "./MealsList";
 import PlanMealsList from "./PlanMealsList";
 
 export default function Home({ meals }) {
+  const mealsInPlan = meals.filter((meal) => meal.inPlan === true);
   return (
     <>
       {console.log(meals, "mealsData", new Date())}
@@ -22,7 +23,8 @@ export default function Home({ meals }) {
         </Link>
         <Routes>
           <Route exact path="/" element={<MealsList meals={meals} />} />
-          <Route path="/plan" element={<PlanMealsList />} />
+          {console.log(mealsInPlan, "mealsInPlan")}
+          <Route path="/plan" element={<PlanMealsList meals={mealsInPlan} />} />
         </Routes>
       </Box>
     </>
