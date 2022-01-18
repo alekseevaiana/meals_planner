@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import IngridientsList from "./IngridientsList";
 
-export default function MealsItem({ item, type }) {
+export default function MealsItem({ item, type, handlePlanBtn }) {
   const actionBtnType = (type) => {
     if (type === "inPlan") {
       return "Remove from plan";
@@ -25,7 +25,11 @@ export default function MealsItem({ item, type }) {
         })}
       </Box>
       <Box sx={{ mb: 2 }}>
-        <Button variant="contained" sx={{ mr: 2 }}>
+        <Button
+          variant="contained"
+          sx={{ mr: 2 }}
+          onClick={() => handlePlanBtn(item.id)}
+        >
           {actionBtnType(type)}
         </Button>
         <Button variant="outlined">Open</Button>

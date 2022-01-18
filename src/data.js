@@ -2,15 +2,18 @@ const buy_ingridients = ["meat", "tomato paste", "parmezan", "milk"];
 const pantry_ingridients = ["spaghetti", "rice", "shishito pepper"];
 export const meals = [
   {
+    id: 1,
     name: "Spaghetti carbonara",
     ingridients: ["spaghetti", "meat", "parmezan", "tomato paste"],
     inPlan: true,
   },
   {
+    id: 2,
     name: "Rice with meat",
     ingridients: ["rice", "meat", "souce", "onion", "carrot"],
   },
   {
+    id: 3,
     name: "Rice with shishito peppers and meat",
     ingridients: [
       "rice",
@@ -22,10 +25,12 @@ export const meals = [
     ],
   },
   {
+    id: 4,
     name: "Spaghetti with shishito peppers",
     ingridients: ["spaghetti", "shishito pepper"],
   },
   {
+    id: 5,
     name: "Spanish-Style Beef & Vegetables",
     ingridients: [
       "Ground Beef",
@@ -39,6 +44,7 @@ export const meals = [
     ],
   },
   {
+    id: 6,
     name: "Pork Chorizo, Potato & Fig Bake",
     ingridients: [
       "Pork Chorizo",
@@ -50,6 +56,7 @@ export const meals = [
     ],
   },
   {
+    id: 7,
     name: "Romesco Beef & Poblano Pepper",
     ingridients: [
       "Ground Beef",
@@ -62,6 +69,7 @@ export const meals = [
     inPlan: true,
   },
   {
+    id: 8,
     name: "Pan-Seared Cod",
     ingridients: [
       "Cod Fillets",
@@ -76,6 +84,7 @@ export const meals = [
     ],
   },
   {
+    id: 9,
     name: "Smoky Guajillo Beef & Rice Bowls",
     ingridients: [
       "Ground Beef",
@@ -89,6 +98,7 @@ export const meals = [
     ],
   },
   {
+    id: 10,
     name: "Spanish-Spiced Salmon & Veggie Quinoa",
     ingridients: [
       "Skin-On Salmon Fillets",
@@ -103,6 +113,7 @@ export const meals = [
     ],
   },
   {
+    id: 11,
     name: "Calabrian Beef & Gnocchi",
     ingridients: [
       "Ground Beef",
@@ -116,6 +127,7 @@ export const meals = [
     ],
   },
   {
+    id: 12,
     name: "Shawarma-Spiced Cod & Arugula Salad",
     ingridients: [
       "Cod Fillets",
@@ -132,6 +144,7 @@ export const meals = [
     ],
   },
   {
+    id: 13,
     name: "Spicy Pork Sausage Pasta",
     ingridients: [
       "Hot Italian Pork Sausage",
@@ -144,6 +157,7 @@ export const meals = [
     ],
   },
   {
+    id: 14,
     name: "Italian Beef & Pesto Rice",
     ingridients: [
       "Ground Beef",
@@ -159,6 +173,7 @@ export const meals = [
     ],
   },
   {
+    id: 15,
     name: "",
     ingridients: [],
   },

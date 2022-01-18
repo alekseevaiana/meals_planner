@@ -20,13 +20,13 @@ function App() {
   };
 
   const handleAddIngridient = () => {
-    setIngridients([...ingridients, inputIngridient]);
+    setIngridients((prev) => [...prev, inputIngridient]);
     setInputIngridient("");
   };
 
   const handleAddMealBtn = () => {
     const new_meal = { name: inputIngridientName, ingridients };
-    setMealsData([...mealsData, new_meal]);
+    setMealsData((prevMealsData) => [...prevMealsData, new_meal]);
     setIngridients([]);
     navigate("/");
   };
@@ -37,10 +37,29 @@ function App() {
     navigate("/");
   };
 
+  const handleAddToPlanBtn = (id) => {
+    // change inPlan key in id's element
+    console.log("add to plan", id);
+  };
+
+  const handleRemoveFromPlanBtn = () => {
+    console.log("remove from plan");
+  };
+
   return (
     <div className="App">
       <Routes>
-        <Route exact path="*" element={<Home meals={mealsData} />} />
+        <Route
+          exact
+          path="*"
+          element={
+            <Home
+              meals={mealsData}
+              handlePlanBtn={handleAddToPlanBtn}
+              handleRemoveFromPlanBtn={handleRemoveFromPlanBtn}
+            />
+          }
+        />
         <Route
           exact
           path="/new_meal"
