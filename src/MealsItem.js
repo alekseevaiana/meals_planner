@@ -1,5 +1,4 @@
 import { Box, Button, Typography } from "@mui/material";
-import IngridientsList from "./IngridientsList";
 
 export default function MealsItem({ item, type, handlePlanBtn }) {
   const actionBtnType = (type) => {

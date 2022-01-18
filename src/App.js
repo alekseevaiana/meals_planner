@@ -38,8 +38,13 @@ function App() {
   };
 
   const handleAddToPlanBtn = (id) => {
-    // change inPlan key in id's element
-    console.log("add to plan", id);
+    const updatedMeal = mealsData.map((item) => {
+      if (item.id === id) {
+        item.inPlan = true;
+      }
+      return item;
+    });
+    setMealsData(updatedMeal);
   };
 
   const handleRemoveFromPlanBtn = () => {
