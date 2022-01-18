@@ -3,11 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import MealsList from "./MealsList";
 import PlanMealsList from "./PlanMealsList";
 
-export default function Home({
-  meals,
-  handlePlanBtn,
-  handleRemoveFromPlanBtn,
-}) {
+export default function Home({ meals, handlePlanBtn }) {
   const mealsInPlan = meals.filter((meal) => meal.inPlan === true);
   return (
     <>
@@ -29,13 +25,7 @@ export default function Home({
           <Route
             exact
             path="/"
-            element={
-              <MealsList
-                meals={meals}
-                handlePlanBtn={handlePlanBtn}
-                handleRemoveFromPlanBtn={handleRemoveFromPlanBtn}
-              />
-            }
+            element={<MealsList meals={meals} handlePlanBtn={handlePlanBtn} />}
           />
           {console.log(mealsInPlan, "mealsInPlan")}
           <Route
@@ -44,7 +34,6 @@ export default function Home({
               <PlanMealsList
                 meals={mealsInPlan}
                 handlePlanBtn={handlePlanBtn}
-                handleRemoveFromPlanBtn={handleRemoveFromPlanBtn}
               />
             }
           />

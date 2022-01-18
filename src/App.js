@@ -40,17 +40,7 @@ function App() {
   const handleAddToPlanBtn = (id) => {
     const updatedMeal = mealsData.map((item) => {
       if (item.id === id) {
-        item.inPlan = true;
-      }
-      return item;
-    });
-    setMealsData(updatedMeal);
-  };
-
-  const handleRemoveFromPlanBtn = (id) => {
-    const updatedMeal = mealsData.map((item) => {
-      if (item.id === id) {
-        item.inPlan = false;
+        item.inPlan = !item.inPlan;
       }
       return item;
     });
@@ -64,11 +54,7 @@ function App() {
           exact
           path="*"
           element={
-            <Home
-              meals={mealsData}
-              handlePlanBtn={handleAddToPlanBtn}
-              handleRemoveFromPlanBtn={handleRemoveFromPlanBtn}
-            />
+            <Home meals={mealsData} handlePlanBtn={handleAddToPlanBtn} />
           }
         />
         <Route
