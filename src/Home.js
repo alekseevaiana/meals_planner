@@ -29,7 +29,13 @@ export default function Home({
           <Route
             exact
             path="/"
-            element={<MealsList meals={meals} handlePlanBtn={handlePlanBtn} />}
+            element={
+              <MealsList
+                meals={meals}
+                handlePlanBtn={handlePlanBtn}
+                handleRemoveFromPlanBtn={handleRemoveFromPlanBtn}
+              />
+            }
           />
           {console.log(mealsInPlan, "mealsInPlan")}
           <Route
@@ -37,7 +43,8 @@ export default function Home({
             element={
               <PlanMealsList
                 meals={mealsInPlan}
-                handlePlanBtn={handleRemoveFromPlanBtn}
+                handlePlanBtn={handlePlanBtn}
+                handleRemoveFromPlanBtn={handleRemoveFromPlanBtn}
               />
             }
           />

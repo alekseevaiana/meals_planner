@@ -47,8 +47,14 @@ function App() {
     setMealsData(updatedMeal);
   };
 
-  const handleRemoveFromPlanBtn = () => {
-    console.log("remove from plan");
+  const handleRemoveFromPlanBtn = (id) => {
+    const updatedMeal = mealsData.map((item) => {
+      if (item.id === id) {
+        item.inPlan = false;
+      }
+      return item;
+    });
+    setMealsData(updatedMeal);
   };
 
   return (

@@ -1,8 +1,12 @@
 import { Box, Button, Typography } from "@mui/material";
 
-export default function MealsItem({ item, type, handlePlanBtn }) {
-  const actionBtnType = (type) => {
-    if (type === "inPlan") {
+export default function MealsItem({
+  item,
+  handlePlanBtn,
+  handleRemoveFromPlanBtn,
+}) {
+  const actionBtnType = (inPlan) => {
+    if (inPlan) {
       return "Remove from plan";
     } else {
       return "Add to plan";
@@ -27,9 +31,13 @@ export default function MealsItem({ item, type, handlePlanBtn }) {
         <Button
           variant="contained"
           sx={{ mr: 2 }}
-          onClick={() => handlePlanBtn(item.id)}
+          onClick={() =>
+            item.inPlan
+              ? handleRemoveFromPlanBtn(item.id)
+              : handlePlanBtn(item.id)
+          }
         >
-          {actionBtnType(type)}
+          {actionBtnType(item.inPlan)}
         </Button>
         <Button variant="outlined">Open</Button>
       </Box>
