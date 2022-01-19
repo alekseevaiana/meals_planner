@@ -1,7 +1,7 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
-import Home from "./Home";
-import CreateMeal from "./CreateMeal";
-import MealPage from "./MealPage";
+import Home from "./components/Home";
+import CreateMeal from "./components/CreateMeal";
+import MealPage from "./components/MealPage";
 import { meals } from "./data.js";
 import { useState } from "react";
 

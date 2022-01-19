@@ -1,6 +1,6 @@
 import { Typography, Button } from "@mui/material";
 import { useParams } from "react-router-dom";
-import IngridientsList from "./components/IngridientsList";
+import IngridientsList from "./IngridientsList";
 import { Link } from "react-router-dom";
 
 export default function MealPage({ mealsData }) {

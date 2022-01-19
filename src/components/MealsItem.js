@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import IngridientsList from "./components/IngridientsList";
+import IngridientsList from "./IngridientsList";
 
 export default function MealsItem({
   item,
