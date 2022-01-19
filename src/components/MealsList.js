@@ -14,6 +14,7 @@ export default function MealsList({
         color="secondary"
         component={Link}
         to={"/new_meal"}
+        sx={{ mb: 2 }}
       >
         Add new meal
       </Button>

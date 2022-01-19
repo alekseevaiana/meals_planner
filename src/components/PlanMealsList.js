@@ -8,7 +8,6 @@ export default function PlanMealsList({
 }) {
   return (
     <>
-      <Typography>My list with plan meals</Typography>
       <MealsList
         meals={meals}
         handlePlanBtn={handlePlanBtn}
