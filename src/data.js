@@ -172,11 +172,6 @@ export const meals = [
       "Italian Seasoning ",
     ],
   },
-  {
-    id: 15,
-    name: "",
-    ingridients: [],
-  },
 ];
 
 // 1. ["spaghetti", "shishito pepper"] 3 pentry

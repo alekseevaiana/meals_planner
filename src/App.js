@@ -1,6 +1,7 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./Home";
 import CreateMeal from "./CreateMeal";
+import MealPage from "./MealPage";
 import { meals } from "./data.js";
 import { useState } from "react";
 
@@ -25,7 +26,8 @@ function App() {
   };
 
   const handleAddMealBtn = () => {
-    const new_meal = { name: inputIngridientName, ingridients };
+    const lastId = mealsData[mealsData.length - 1].id;
+    const new_meal = { name: inputIngridientName, ingridients, id: lastId + 1 };
     setMealsData((prevMealsData) => [...prevMealsData, new_meal]);
     setIngridients([]);
     navigate("/");
@@ -37,7 +39,7 @@ function App() {
     navigate("/");
   };
 
-  const handleAddToPlanBtn = (id) => {
+  const handleToggleToPlanBtn = (id) => {
     const updatedMeal = mealsData.map((item) => {
       if (item.id === id) {
         item.inPlan = !item.inPlan;
@@ -54,7 +56,7 @@ function App() {
           exact
           path="*"
           element={
-            <Home meals={mealsData} handlePlanBtn={handleAddToPlanBtn} />
+            <Home meals={mealsData} handlePlanBtn={handleToggleToPlanBtn} />
           }
         />
         <Route
@@ -73,6 +75,7 @@ function App() {
             />
           }
         />
+        <Route exact path="/meals/:id" element={<MealPage />} />
       </Routes>
     </div>
   );
