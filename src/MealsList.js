@@ -2,7 +2,11 @@ import { Link } from "react-router-dom";
 import { Button, Divider } from "@mui/material";
 import MealsItem from "./MealsItem";
 
-export default function MealsList({ meals, handlePlanBtn }) {
+export default function MealsList({
+  meals,
+  handlePlanBtn,
+  handleOpenMealBtnClick,
+}) {
   return (
     <>
       <Button
@@ -16,7 +20,11 @@ export default function MealsList({ meals, handlePlanBtn }) {
       {meals.map((item) => {
         return (
           <>
-            <MealsItem item={item} handlePlanBtn={handlePlanBtn} />
+            <MealsItem
+              item={item}
+              handlePlanBtn={handlePlanBtn}
+              handleOpenMealBtnClick={handleOpenMealBtnClick}
+            />
             <Divider sx={{ mb: 2 }} />
           </>
         );

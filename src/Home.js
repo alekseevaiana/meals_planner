@@ -3,7 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import MealsList from "./MealsList";
 import PlanMealsList from "./PlanMealsList";
 
-export default function Home({ meals, handlePlanBtn }) {
+export default function Home({ meals, handlePlanBtn, handleOpenMealBtnClick }) {
   const mealsInPlan = meals.filter((meal) => meal.inPlan === true);
   return (
     <>
@@ -16,16 +16,22 @@ export default function Home({ meals, handlePlanBtn }) {
         }}
       >
         <Link to="/">
-          <Typography>Meals</Typography>
+          <Box>Meals</Box>
         </Link>
         <Link to="/plan">
-          <Typography>Plan</Typography>
+          <Box>Plan</Box>
         </Link>
         <Routes>
           <Route
             exact
             path="/"
-            element={<MealsList meals={meals} handlePlanBtn={handlePlanBtn} />}
+            element={
+              <MealsList
+                meals={meals}
+                handlePlanBtn={handlePlanBtn}
+                handleOpenMealBtnClick={handleOpenMealBtnClick}
+              />
+            }
           />
           {console.log(mealsInPlan, "mealsInPlan")}
           <Route
@@ -34,6 +40,7 @@ export default function Home({ meals, handlePlanBtn }) {
               <PlanMealsList
                 meals={mealsInPlan}
                 handlePlanBtn={handlePlanBtn}
+                handleOpenMealBtnClick={handleOpenMealBtnClick}
               />
             }
           />

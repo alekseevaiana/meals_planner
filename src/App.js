@@ -49,6 +49,12 @@ function App() {
     setMealsData(updatedMeal);
   };
 
+  const handleOpenMealBtnClick = (id) => {
+    // navigate to meals/:id
+    console.log(`open meal with id ${id}`);
+    navigate(`/meals/${id}`);
+  };
+
   return (
     <div className="App">
       <Routes>
@@ -56,8 +62,17 @@ function App() {
           exact
           path="*"
           element={
-            <Home meals={mealsData} handlePlanBtn={handleToggleToPlanBtn} />
+            <Home
+              meals={mealsData}
+              handlePlanBtn={handleToggleToPlanBtn}
+              handleOpenMealBtnClick={handleOpenMealBtnClick}
+            />
           }
+        />
+        <Route
+          exact
+          path="/meals/:id"
+          element={<MealPage mealsData={mealsData} />}
         />
         <Route
           exact
@@ -75,7 +90,6 @@ function App() {
             />
           }
         />
-        <Route exact path="/meals/:id" element={<MealPage />} />
       </Routes>
     </div>
   );
