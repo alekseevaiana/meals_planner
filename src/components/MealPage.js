@@ -5,10 +5,9 @@ import { Link } from "react-router-dom";
 
 export default function MealPage({ mealsData }) {
   const params = useParams();
+  const paramId = Number.parseInt(params.id, 10) ?? "N/A";
 
-  const currentMeal = mealsData.find(
-    (meal) => meal.id === Number.parseInt(params.id)
-  );
+  const currentMeal = mealsData.find((meal) => meal.id === paramId);
 
   return (
     <>

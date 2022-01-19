@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import MealsList from "./MealsList";
 
 export default function PlanMealsList({

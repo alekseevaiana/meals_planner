@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { Routes, Route, NavLink } from "react-router-dom";
@@ -30,7 +30,6 @@ export default function Home({ meals, handlePlanBtn, handleOpenMealBtnClick }) {
   const mealsInPlan = meals.filter((meal) => meal.inPlan === true);
   return (
     <>
-      {console.log(meals, "mealsData", new Date())}
       <Box
         sx={{
           p: 2,
@@ -62,7 +61,6 @@ export default function Home({ meals, handlePlanBtn, handleOpenMealBtnClick }) {
               />
             }
           />
-          {console.log(mealsInPlan, "mealsInPlan")}
           <Route
             path="/plan"
             element={

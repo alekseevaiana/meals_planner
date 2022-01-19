@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Button, Divider } from "@mui/material";
+import { Box, Button, Divider } from "@mui/material";
 import MealsItem from "./MealsItem";
 
 export default function MealsList({
@@ -18,16 +18,16 @@ export default function MealsList({
       >
         Add new meal
       </Button>
-      {meals.map((item) => {
+      {meals.map((item, index) => {
         return (
-          <>
+          <Box key={item.id}>
             <MealsItem
               item={item}
               handlePlanBtn={handlePlanBtn}
               handleOpenMealBtnClick={handleOpenMealBtnClick}
             />
             <Divider sx={{ mb: 2 }} />
-          </>
+          </Box>
         );
       })}
     </>

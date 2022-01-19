@@ -27,8 +27,8 @@ function App() {
 
   const handleAddMealBtn = () => {
     const lastId = mealsData[mealsData.length - 1].id;
-    const new_meal = { name: inputIngridientName, ingridients, id: lastId + 1 };
-    setMealsData((prevMealsData) => [...prevMealsData, new_meal]);
+    const newMeal = { name: inputIngridientName, ingridients, id: lastId + 1 };
+    setMealsData((prevMealsData) => [...prevMealsData, newMeal]);
     setIngridients([]);
     navigate("/");
   };
@@ -50,8 +50,6 @@ function App() {
   };
 
   const handleOpenMealBtnClick = (id) => {
-    // navigate to meals/:id
-    console.log(`open meal with id ${id}`);
     navigate(`/meals/${id}`);
   };
 
@@ -76,7 +74,7 @@ function App() {
         />
         <Route
           exact
-          path="/new_meal"
+          path="/newMeal"
           element={
             <CreateMeal
               meals={mealsData}
