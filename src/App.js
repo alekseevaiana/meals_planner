@@ -14,22 +14,21 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // storing input name
     localStorage.setItem("mealsData", JSON.stringify(mealsData));
   }, [mealsData]);
 
-  const handleAddIngridientIcon = () => {
-    console.log("ingridient added");
-    setIngridientsList((prev) => [...prev, currentInputIngridient]);
-    setCurrentInputIngridient("");
+  const handleMealNameInput = (e) => {
+    setMealName(e.target.value);
   };
 
   function handleIngridientInputChange(e) {
     setCurrentInputIngridient(e.target.value);
   }
 
-  const handleMealNameInput = (e) => {
-    setMealName(e.target.value);
+  const handleAddIngridientIcon = () => {
+    console.log("ingridient added");
+    setIngridientsList((prev) => [...prev, currentInputIngridient]);
+    setCurrentInputIngridient("");
   };
 
   const handleAddMealBtn = () => {
@@ -39,6 +38,15 @@ function App() {
     setIngridientsList([]);
     navigate("/");
   };
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    const lastId = mealsData[mealsData.length - 1].id;
+    const newMeal = { name: mealName, ingridientsList, id: lastId + 1 };
+    setMealsData((prevMealsData) => [...prevMealsData, newMeal]);
+    setIngridientsList([]);
+    navigate("/");
+  }
 
   const handleCancelMealBtn = () => {
     setIngridientsList([]);
@@ -85,7 +93,7 @@ function App() {
           element={
             <CreateMeal
               meals={mealsData}
-              handleAddMealBtn={handleAddMealBtn}
+              handleFormSubmit={handleFormSubmit}
               ingridientsList={ingridientsList}
               handleMealNameInput={handleMealNameInput}
               handleCancelMealBtn={handleCancelMealBtn}

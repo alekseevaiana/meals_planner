@@ -6,7 +6,7 @@ import IngridientsList from "./IngridientsList";
 import AddIngridient from "./AddIngridient";
 
 export default function CreateMeal({
-  handleAddMealBtn,
+  handleFormSubmit,
   handleAddIngridientIcon,
   ingridientsList,
   currentInputIngridient,
@@ -14,9 +14,6 @@ export default function CreateMeal({
   handleCancelMealBtn,
   handleIngridientInputChange,
 }) {
-  function handleFormSubmit(event) {
-    event.preventDefault();
-  }
   return (
     <>
       <Button variant="contained" color="secondary" component={Link} to={"/"}>
@@ -41,7 +38,7 @@ export default function CreateMeal({
           <Button
             variant="contained"
             color="success"
-            onClick={handleAddMealBtn}
+            //onClick={handleAddMealBtn}
             type="submit"
           >
             Add
