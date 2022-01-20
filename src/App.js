@@ -3,39 +3,46 @@ import Home from "./components/Home";
 import CreateMeal from "./components/CreateMeal";
 import MealPage from "./components/MealPage";
 import { meals } from "./data.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [mealsData, setMealsData] = useState(meals);
-  const [inputIngridient, setInputIngridient] = useState();
-  const [ingridients, setIngridients] = useState(["chicken"]);
-  const [inputIngridientName, setInputIngridientName] = useState();
+
+  const [mealName, setMealName] = useState("");
+  const [currentInputIngridient, setCurrentInputIngridient] = useState("");
+  const [ingridientsList, setIngridientsList] = useState([]);
   const navigate = useNavigate();
 
-  const handleIngridientInput = (e) => {
-    setInputIngridient(e.target.value);
+  useEffect(() => {
+    // storing input name
+    localStorage.setItem("mealsData", JSON.stringify(mealsData));
+  }, [mealsData]);
+
+  const handleAddIngridientIcon = () => {
+    console.log("ingridient added");
+    setIngridientsList((prev) => [...prev, currentInputIngridient]);
+    setCurrentInputIngridient("");
   };
 
-  const handleIngridientNameInput = (e) => {
-    setInputIngridientName(e.target.value);
-  };
+  function handleIngridientInputChange(e) {
+    setCurrentInputIngridient(e.target.value);
+  }
 
-  const handleAddIngridient = () => {
-    setIngridients((prev) => [...prev, inputIngridient]);
-    setInputIngridient("");
+  const handleMealNameInput = (e) => {
+    setMealName(e.target.value);
   };
 
   const handleAddMealBtn = () => {
     const lastId = mealsData[mealsData.length - 1].id;
-    const newMeal = { name: inputIngridientName, ingridients, id: lastId + 1 };
+    const newMeal = { name: mealName, ingridientsList, id: lastId + 1 };
     setMealsData((prevMealsData) => [...prevMealsData, newMeal]);
-    setIngridients([]);
+    setIngridientsList([]);
     navigate("/");
   };
 
   const handleCancelMealBtn = () => {
-    setIngridients([]);
-    setInputIngridientName("");
+    setIngridientsList([]);
+    currentInputIngridient("");
     navigate("/");
   };
 
@@ -74,17 +81,17 @@ function App() {
         />
         <Route
           exact
-          path="/newMeal"
+          path="/new_meal"
           element={
             <CreateMeal
               meals={mealsData}
               handleAddMealBtn={handleAddMealBtn}
-              handleIngridientInput={handleIngridientInput}
-              handleAddIngridient={handleAddIngridient}
-              inputIngridient={inputIngridient}
-              ingridients={ingridients}
-              handleIngridientNameInput={handleIngridientNameInput}
+              ingridientsList={ingridientsList}
+              handleMealNameInput={handleMealNameInput}
               handleCancelMealBtn={handleCancelMealBtn}
+              handleAddIngridientIcon={handleAddIngridientIcon}
+              handleIngridientInputChange={handleIngridientInputChange}
+              currentInputIngridient={currentInputIngridient}
             />
           }
         />

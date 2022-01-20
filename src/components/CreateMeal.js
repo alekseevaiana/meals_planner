@@ -2,15 +2,17 @@ import { Link } from "react-router-dom";
 import { Button, Typography, TextField, Box } from "@mui/material";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 import { useState } from "react";
+import IngridientsList from "./IngridientsList";
+import AddIngridient from "./AddIngridient";
 
 export default function CreateMeal({
   handleAddMealBtn,
-  handleIngridientInput,
-  handleAddIngridient,
-  inputIngridient,
-  ingridients,
-  handleIngridientNameInput,
+  handleAddIngridientIcon,
+  ingridientsList,
+  currentInputIngridient,
+  handleMealNameInput,
   handleCancelMealBtn,
+  handleIngridientInputChange,
 }) {
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -27,25 +29,14 @@ export default function CreateMeal({
           label="Title"
           variant="outlined"
           sx={{ mb: 2 }}
-          onChange={handleIngridientNameInput}
+          onChange={handleMealNameInput}
         />
-        <TextField
-          id="outlined-basic"
-          label="Add ingridient"
-          variant="outlined"
-          sx={{ mb: 2 }}
-          onChange={handleIngridientInput}
-          value={inputIngridient}
+        <AddIngridient
+          handleAddIngridientIcon={handleAddIngridientIcon}
+          handleIngridientInputChange={handleIngridientInputChange}
+          ingridientsList={ingridientsList}
+          currentInputIngridient={currentInputIngridient}
         />
-        <AddCircleOutlineRoundedIcon onClick={handleAddIngridient} />
-        <Box sx={{ mb: 2 }}>
-          {ingridients &&
-            ingridients.map((ingridient, index) => {
-              return `${ingridient} ${
-                ingridients.length - 1 === index ? "" : ", "
-              }`;
-            })}
-        </Box>
         <Box>
           <Button
             variant="contained"

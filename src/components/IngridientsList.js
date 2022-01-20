@@ -1,16 +1,17 @@
 import { List, ListItem } from "@mui/material";
 
-export default function IngridientsList({ meal }) {
+export default function IngridientsList({ ingridients }) {
   return (
     <List>
-      {meal.ingridients.map((ingridient, index) => {
-        return (
-          <ListItem key={index}>
-            {ingridient}
-            {index !== meal.ingridients.length - 1 ? ", " : ""}
-          </ListItem>
-        );
-      })}
+      {ingridients &&
+        ingridients.map((ingridient, index) => {
+          return (
+            <ListItem key={index}>
+              {ingridient}
+              {index !== ingridients.length - 1 ? ", " : ""}
+            </ListItem>
+          );
+        })}
     </List>
   );
 }

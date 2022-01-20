@@ -5,9 +5,18 @@ import { Link } from "react-router-dom";
 
 export default function MealPage({ mealsData }) {
   const params = useParams();
-  const paramId = Number.parseInt(params.id, 10) ?? "N/A";
-
+  // check here if paramId is not a number
+  const paramId = Number.parseInt(params.id, 10);
+  // do it only if paramId is a number
   const currentMeal = mealsData.find((meal) => meal.id === paramId);
+  //use useMemo for preventing doing the same if component rerenders
+  // const currentMeal = () => {
+  //   const paramId = Number.parseInt(params.id, 10);
+  //   if (paramId) {
+  //     return mealsData.find((meal) => meal.id === paramId);
+  //   }
+  //   return "Error";
+  // };
 
   return (
     <>
@@ -17,7 +26,7 @@ export default function MealPage({ mealsData }) {
       <Typography variant="h6" component="h2">
         {currentMeal.name}
       </Typography>
-      <IngridientsList meal={currentMeal} />
+      <IngridientsList ingridients={currentMeal.ingridients} />
     </>
   );
 }
