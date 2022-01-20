@@ -1,6 +1,7 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
-import Home from "./Home";
-import CreateMeal from "./CreateMeal";
+import Home from "./components/Home";
+import CreateMeal from "./components/CreateMeal";
+import MealPage from "./components/MealPage";
 import { meals } from "./data.js";
 import { useState } from "react";
 
@@ -25,8 +26,9 @@ function App() {
   };
 
   const handleAddMealBtn = () => {
-    const new_meal = { name: inputIngridientName, ingridients };
-    setMealsData((prevMealsData) => [...prevMealsData, new_meal]);
+    const lastId = mealsData[mealsData.length - 1].id;
+    const newMeal = { name: inputIngridientName, ingridients, id: lastId + 1 };
+    setMealsData((prevMealsData) => [...prevMealsData, newMeal]);
     setIngridients([]);
     navigate("/");
   };
@@ -37,13 +39,18 @@ function App() {
     navigate("/");
   };
 
-  const handleAddToPlanBtn = (id) => {
-    // change inPlan key in id's element
-    console.log("add to plan", id);
+  const handleToggleToPlanBtn = (id) => {
+    const updatedMeal = mealsData.map((item) => {
+      if (item.id === id) {
+        item.inPlan = !item.inPlan;
+      }
+      return item;
+    });
+    setMealsData(updatedMeal);
   };
 
-  const handleRemoveFromPlanBtn = () => {
-    console.log("remove from plan");
+  const handleOpenMealBtnClick = (id) => {
+    navigate(`/meals/${id}`);
   };
 
   return (
@@ -55,14 +62,19 @@ function App() {
           element={
             <Home
               meals={mealsData}
-              handlePlanBtn={handleAddToPlanBtn}
-              handleRemoveFromPlanBtn={handleRemoveFromPlanBtn}
+              handlePlanBtn={handleToggleToPlanBtn}
+              handleOpenMealBtnClick={handleOpenMealBtnClick}
             />
           }
         />
         <Route
           exact
-          path="/new_meal"
+          path="/meals/:id"
+          element={<MealPage mealsData={mealsData} />}
+        />
+        <Route
+          exact
+          path="/newMeal"
           element={
             <CreateMeal
               meals={mealsData}

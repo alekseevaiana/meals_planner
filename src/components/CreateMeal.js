@@ -13,7 +13,6 @@ export default function CreateMeal({
   handleCancelMealBtn,
 }) {
   function handleFormSubmit(event) {
-    console.log("form submitted");
     event.preventDefault();
   }
   return (

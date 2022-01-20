@@ -1,9 +1,13 @@
 import { Box, Button, Typography } from "@mui/material";
 import IngridientsList from "./IngridientsList";
 
-export default function MealsItem({ item, type, handlePlanBtn }) {
-  const actionBtnType = (type) => {
-    if (type === "inPlan") {
+export default function MealsItem({
+  item,
+  handlePlanBtn,
+  handleOpenMealBtnClick,
+}) {
+  const actionBtnType = (inPlan) => {
+    if (inPlan) {
       return "Remove from plan";
     } else {
       return "Add to plan";
@@ -15,14 +19,7 @@ export default function MealsItem({ item, type, handlePlanBtn }) {
         {item.name}
       </Typography>
       <Box sx={{ mb: 1 }}>
-        {item.ingridients.map((ingridient, index) => {
-          return (
-            <>
-              {ingridient}
-              {index != item.ingridients.length - 1 ? ", " : ""}
-            </>
-          );
-        })}
+        <IngridientsList meal={item} />
       </Box>
       <Box sx={{ mb: 2 }}>
         <Button
@@ -30,9 +27,14 @@ export default function MealsItem({ item, type, handlePlanBtn }) {
           sx={{ mr: 2 }}
           onClick={() => handlePlanBtn(item.id)}
         >
-          {actionBtnType(type)}
+          {actionBtnType(item.inPlan)}
         </Button>
-        <Button variant="outlined">Open</Button>
+        <Button
+          variant="outlined"
+          onClick={() => handleOpenMealBtnClick(item.id)}
+        >
+          Open
+        </Button>
       </Box>
     </>
   );
