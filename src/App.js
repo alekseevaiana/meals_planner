@@ -6,7 +6,11 @@ import { meals } from "./data.js";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [mealsData, setMealsData] = useState(meals);
+  const [mealsData, setMealsData] = useState(() => {
+    const saved = localStorage.getItem("mealsData");
+    const initialValue = JSON.parse(saved);
+    return [...meals, ...initialValue];
+  });
 
   const [mealName, setMealName] = useState("");
   const [currentInputIngridient, setCurrentInputIngridient] = useState("");
@@ -31,18 +35,14 @@ function App() {
     setCurrentInputIngridient("");
   };
 
-  const handleAddMealBtn = () => {
-    const lastId = mealsData[mealsData.length - 1].id;
-    const newMeal = { name: mealName, ingridientsList, id: lastId + 1 };
-    setMealsData((prevMealsData) => [...prevMealsData, newMeal]);
-    setIngridientsList([]);
-    navigate("/");
-  };
-
   function handleFormSubmit(event) {
     event.preventDefault();
     const lastId = mealsData[mealsData.length - 1].id;
-    const newMeal = { name: mealName, ingridientsList, id: lastId + 1 };
+    const newMeal = {
+      name: mealName,
+      ingridients: ingridientsList,
+      id: lastId + 1,
+    };
     setMealsData((prevMealsData) => [...prevMealsData, newMeal]);
     setIngridientsList([]);
     navigate("/");
