@@ -9,8 +9,9 @@ function App() {
   const [mealsData, setMealsData] = useState(() => {
     const saved = localStorage.getItem("mealsData");
     const initialValue = JSON.parse(saved);
-    return [...meals, ...initialValue];
+    return initialValue;
   });
+  //const [mealsData, setMealsData] = useState(meals);
 
   const [mealName, setMealName] = useState("");
   const [currentInputIngridient, setCurrentInputIngridient] = useState("");
