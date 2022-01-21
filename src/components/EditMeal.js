@@ -1,3 +1,11 @@
+import { Typography } from "@mui/material";
+import MealForm from "./MealForm";
+
 export default function EditMeal() {
-  return <>Edit Meal</>;
+  return (
+    <>
+      <Typography>Edit meal</Typography>
+      <MealForm />
+    </>
+  );
 }
