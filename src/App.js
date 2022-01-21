@@ -69,6 +69,13 @@ function App() {
     navigate(`/meals/${id}`);
   };
 
+  const onDeleteClick = (id) => {
+    console.log("delete ", id);
+    const newMealsData = mealsData.filter((meal) => meal.id !== id);
+    setMealsData(newMealsData);
+    navigate("/");
+  };
+
   return (
     <div className="App">
       <Routes>
@@ -86,7 +93,9 @@ function App() {
         <Route
           exact
           path="/meals/:id"
-          element={<MealPage mealsData={mealsData} />}
+          element={
+            <MealPage mealsData={mealsData} onDeleteClick={onDeleteClick} />
+          }
         />
         <Route
           exact

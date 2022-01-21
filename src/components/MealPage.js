@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import IngridientsList from "./IngridientsList";
 import { Link } from "react-router-dom";
 
-export default function MealPage({ mealsData }) {
+export default function MealPage({ mealsData, onDeleteClick }) {
   const params = useParams();
   // check here if paramId is not a number
   const paramId = Number.parseInt(params.id, 10);
@@ -27,6 +27,13 @@ export default function MealPage({ mealsData }) {
         {currentMeal.name}
       </Typography>
       <IngridientsList ingridients={currentMeal.ingridients} />
+      <Button
+        variant="outlined"
+        color="error"
+        onClick={() => onDeleteClick(currentMeal.id)}
+      >
+        Delete
+      </Button>
     </>
   );
 }
