@@ -4,6 +4,7 @@ import CreateMeal from "./components/CreateMeal";
 import MealPage from "./components/MealPage";
 import { meals } from "./data.js";
 import { useState, useEffect } from "react";
+import EditMeal from "./components/EditMeal";
 
 function App() {
   const [mealsData, setMealsData] = useState(() => {
@@ -69,7 +70,6 @@ function App() {
   };
 
   const onDeleteClick = (id) => {
-    console.log("delete ", id);
     const newMealsData = mealsData.filter((meal) => meal.id !== id);
     setMealsData(newMealsData);
     navigate("/");
@@ -112,6 +112,7 @@ function App() {
             />
           }
         />
+        <Route exact path="/meals/:id/edit" element={<EditMeal />} />
       </Routes>
     </div>
   );

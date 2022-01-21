@@ -34,7 +34,12 @@ export default function MealPage({ mealsData, onDeleteClick }) {
       >
         Delete
       </Button>
-      <Button variant="outlined" color="secondary">
+      <Button
+        variant="outlined"
+        color="secondary"
+        component={Link}
+        to={`/meals/${params.id}/edit`}
+      >
         Edit
       </Button>
     </>
