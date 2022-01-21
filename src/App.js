@@ -11,7 +11,6 @@ function App() {
     const initialValue = JSON.parse(saved);
     return initialValue;
   });
-  //const [mealsData, setMealsData] = useState(meals);
 
   const [mealName, setMealName] = useState("");
   const [currentInputIngridient, setCurrentInputIngridient] = useState("");
@@ -36,7 +35,7 @@ function App() {
     setCurrentInputIngridient("");
   };
 
-  function handleFormSubmit(event) {
+  function handleCreateMealSubmit(event) {
     event.preventDefault();
     const lastId = mealsData[mealsData.length - 1].id;
     const newMeal = {
@@ -103,7 +102,7 @@ function App() {
           element={
             <CreateMeal
               meals={mealsData}
-              handleFormSubmit={handleFormSubmit}
+              handleFormSubmit={handleCreateMealSubmit}
               ingridientsList={ingridientsList}
               handleMealNameInput={handleMealNameInput}
               handleCancelMealBtn={handleCancelMealBtn}

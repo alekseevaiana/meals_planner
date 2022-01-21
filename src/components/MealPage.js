@@ -34,6 +34,9 @@ export default function MealPage({ mealsData, onDeleteClick }) {
       >
         Delete
       </Button>
+      <Button variant="outlined" color="secondary">
+        Edit
+      </Button>
     </>
   );
 }
