@@ -19,7 +19,7 @@ export default function MealsItem({
         {item.name}
       </Typography>
       <Box sx={{ mb: 1 }}>
-        <IngridientsList meal={item} />
+        <IngridientsList ingridients={item.ingridients} />
       </Box>
       <Box sx={{ mb: 2 }}>
         <Button

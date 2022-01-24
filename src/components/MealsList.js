@@ -20,7 +20,7 @@ export default function MealsList({
       </Button>
       {meals.map((item, index) => {
         return (
-          <Box key={item.id}>
+          <Box key={index}>
             <MealsItem
               item={item}
               handlePlanBtn={handlePlanBtn}

@@ -3,39 +3,49 @@ import Home from "./components/Home";
 import CreateMeal from "./components/CreateMeal";
 import MealPage from "./components/MealPage";
 import { meals } from "./data.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import EditMeal from "./components/EditMeal";
 
 function App() {
-  const [mealsData, setMealsData] = useState(meals);
-  const [inputIngridient, setInputIngridient] = useState();
-  const [ingridients, setIngridients] = useState(["chicken"]);
-  const [inputIngridientName, setInputIngridientName] = useState();
+  const [mealsData, setMealsData] = useState(() => {
+    const saved = localStorage.getItem("mealsData");
+    if (saved) {
+      const initialValue = JSON.parse(saved);
+      return initialValue;
+    } else {
+      return meals;
+    }
+  });
+
   const navigate = useNavigate();
 
-  const handleIngridientInput = (e) => {
-    setInputIngridient(e.target.value);
-  };
+  useEffect(() => {
+    localStorage.setItem("mealsData", JSON.stringify(mealsData));
+  }, [mealsData]);
 
-  const handleIngridientNameInput = (e) => {
-    setInputIngridientName(e.target.value);
-  };
-
-  const handleAddIngridient = () => {
-    setIngridients((prev) => [...prev, inputIngridient]);
-    setInputIngridient("");
-  };
-
-  const handleAddMealBtn = () => {
+  const handleMealChange = (updatedMeal) => {
     const lastId = mealsData[mealsData.length - 1].id;
-    const newMeal = { name: inputIngridientName, ingridients, id: lastId + 1 };
-    setMealsData((prevMealsData) => [...prevMealsData, newMeal]);
-    setIngridients([]);
-    navigate("/");
-  };
-
-  const handleCancelMealBtn = () => {
-    setIngridients([]);
-    setInputIngridientName("");
+    // if there is no id
+    if (updatedMeal.id) {
+      setMealsData((prevMealsData) => {
+        const data = [];
+        for (const meal of prevMealsData) {
+          if (meal.id === updatedMeal.id) {
+            data.push(updatedMeal);
+          } else {
+            data.push(meal);
+          }
+        }
+        return data;
+      });
+    } else {
+      console.log("there is not id");
+      updatedMeal = {
+        ...updatedMeal,
+        id: lastId + 1, // should be last id, can be UUID
+      };
+      setMealsData((prevMealsData) => [...prevMealsData, updatedMeal]);
+    }
     navigate("/");
   };
 
@@ -51,6 +61,12 @@ function App() {
 
   const handleOpenMealBtnClick = (id) => {
     navigate(`/meals/${id}`);
+  };
+
+  const onDeleteClick = (id) => {
+    const newMealsData = mealsData.filter((meal) => meal.id !== id);
+    setMealsData(newMealsData);
+    navigate("/");
   };
 
   return (
@@ -70,22 +86,22 @@ function App() {
         <Route
           exact
           path="/meals/:id"
-          element={<MealPage mealsData={mealsData} />}
+          element={
+            <MealPage mealsData={mealsData} onDeleteClick={onDeleteClick} />
+          }
         />
         <Route
           exact
-          path="/newMeal"
+          path="/new_meal"
           element={
-            <CreateMeal
-              meals={mealsData}
-              handleAddMealBtn={handleAddMealBtn}
-              handleIngridientInput={handleIngridientInput}
-              handleAddIngridient={handleAddIngridient}
-              inputIngridient={inputIngridient}
-              ingridients={ingridients}
-              handleIngridientNameInput={handleIngridientNameInput}
-              handleCancelMealBtn={handleCancelMealBtn}
-            />
+            <CreateMeal handleMealChange={handleMealChange} meals={mealsData} />
+          }
+        />
+        <Route
+          exact
+          path="/meals/:id/edit"
+          element={
+            <EditMeal meals={mealsData} handleMealChange={handleMealChange} />
           }
         />
       </Routes>
