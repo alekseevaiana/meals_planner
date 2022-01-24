@@ -5,36 +5,17 @@ import MealPage from "./components/MealPage";
 import { meals } from "./data.js";
 import { useState, useEffect } from "react";
 import EditMeal from "./components/EditMeal";
-import MealForm from "./components/MealForm2";
-
-const Test = () => {
-  const [meal, setMeal] = useState(null);
-  const handleChange = (updatedMeal) => {
-    if (!updatedMeal.id) {
-      updatedMeal = {
-        ...updatedMeal,
-        id: Math.random(), // should be last id, can be UUID
-      };
-    }
-    setMeal(updatedMeal);
-  };
-  return (
-    <div>
-      <MealForm value={meal} onChange={handleChange} />
-
-      <br />
-      <pre>{JSON.stringify(meal, null, 2)}</pre>
-    </div>
-  );
-};
 
 function App() {
   const [mealsData, setMealsData] = useState(() => {
     const saved = localStorage.getItem("mealsData");
-    const initialValue = JSON.parse(saved);
-    return initialValue;
+    if (saved) {
+      const initialValue = JSON.parse(saved);
+      return initialValue;
+    } else {
+      return meals;
+    }
   });
-  const [meal, setMeal] = useState(null);
 
   const navigate = useNavigate();
 
@@ -44,47 +25,27 @@ function App() {
 
   const handleMealChange = (updatedMeal) => {
     const lastId = mealsData[mealsData.length - 1].id;
-    if (!updatedMeal.id) {
+    // if there is no id
+    if (updatedMeal.id) {
+      setMealsData((prevMealsData) => {
+        const data = [];
+        for (const meal of prevMealsData) {
+          if (meal.id === updatedMeal.id) {
+            data.push(updatedMeal);
+          } else {
+            data.push(meal);
+          }
+        }
+        return data;
+      });
+    } else {
+      console.log("there is not id");
       updatedMeal = {
         ...updatedMeal,
         id: lastId + 1, // should be last id, can be UUID
       };
+      setMealsData((prevMealsData) => [...prevMealsData, updatedMeal]);
     }
-    setMeal(updatedMeal);
-    setMealsData((prevMealsData) => [...prevMealsData, updatedMeal]);
-    navigate("/");
-  };
-
-  // const handleMealNameInput = (e) => {
-  //   setMealName(e.target.value);
-  // };
-
-  // function handleIngridientInputChange(e) {
-  //   setCurrentInputIngridient(e.target.value);
-  // }
-
-  // const handleAddIngridientIcon = () => {
-  //   console.log("ingridient added");
-  //   setIngridientsList((prev) => [...prev, currentInputIngridient]);
-  //   setCurrentInputIngridient("");
-  // };
-
-  // function handleCreateMealSubmit(event) {
-  //   event.preventDefault();
-  //   const lastId = mealsData[mealsData.length - 1].id;
-  //   const newMeal = {
-  //     name: mealName,
-  //     ingridients: ingridientsList,
-  //     id: lastId + 1,
-  //   };
-  //   setMealsData((prevMealsData) => [...prevMealsData, newMeal]);
-  //   setIngridientsList([]);
-  //   navigate("/");
-  // }
-
-  const handleCancelMealBtn = () => {
-    // setIngridientsList([]);
-    // currentInputIngridient("");
     navigate("/");
   };
 
@@ -133,15 +94,16 @@ function App() {
           exact
           path="/new_meal"
           element={
-            <CreateMeal
-              handleMealChange={handleMealChange}
-              meals={mealsData}
-              handleCancelMealBtn={handleCancelMealBtn}
-            />
+            <CreateMeal handleMealChange={handleMealChange} meals={mealsData} />
           }
         />
-        <Route exact path="/test" element={<Test />} />
-        <Route exact path="/meals/:id/edit" element={<EditMeal />} />
+        <Route
+          exact
+          path="/meals/:id/edit"
+          element={
+            <EditMeal meals={mealsData} handleMealChange={handleMealChange} />
+          }
+        />
       </Routes>
     </div>
   );
