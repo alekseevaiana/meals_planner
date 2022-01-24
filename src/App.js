@@ -5,6 +5,28 @@ import MealPage from "./components/MealPage";
 import { meals } from "./data.js";
 import { useState, useEffect } from "react";
 import EditMeal from "./components/EditMeal";
+import MealForm from "./components/MealForm2";
+
+const Test = () => {
+  const [meal, setMeal] = useState(null);
+  const handleChange = (updatedMeal) => {
+    if (!updatedMeal.id) {
+      updatedMeal = {
+        ...updatedMeal,
+        id: Math.random(), // should be last id, can be UUID
+      };
+    }
+    setMeal(updatedMeal);
+  };
+  return (
+    <div>
+      <MealForm value={meal} onChange={handleChange} />
+
+      <br />
+      <pre>{JSON.stringify(meal, null, 2)}</pre>
+    </div>
+  );
+};
 
 function App() {
   const [mealsData, setMealsData] = useState(() => {
@@ -12,46 +34,57 @@ function App() {
     const initialValue = JSON.parse(saved);
     return initialValue;
   });
+  const [meal, setMeal] = useState(null);
 
-  const [mealName, setMealName] = useState("");
-  const [currentInputIngridient, setCurrentInputIngridient] = useState("");
-  const [ingridientsList, setIngridientsList] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     localStorage.setItem("mealsData", JSON.stringify(mealsData));
   }, [mealsData]);
 
-  const handleMealNameInput = (e) => {
-    setMealName(e.target.value);
-  };
-
-  function handleIngridientInputChange(e) {
-    setCurrentInputIngridient(e.target.value);
-  }
-
-  const handleAddIngridientIcon = () => {
-    console.log("ingridient added");
-    setIngridientsList((prev) => [...prev, currentInputIngridient]);
-    setCurrentInputIngridient("");
-  };
-
-  function handleCreateMealSubmit(event) {
-    event.preventDefault();
+  const handleMealChange = (updatedMeal) => {
     const lastId = mealsData[mealsData.length - 1].id;
-    const newMeal = {
-      name: mealName,
-      ingridients: ingridientsList,
-      id: lastId + 1,
-    };
-    setMealsData((prevMealsData) => [...prevMealsData, newMeal]);
-    setIngridientsList([]);
+    if (!updatedMeal.id) {
+      updatedMeal = {
+        ...updatedMeal,
+        id: lastId + 1, // should be last id, can be UUID
+      };
+    }
+    setMeal(updatedMeal);
+    setMealsData((prevMealsData) => [...prevMealsData, updatedMeal]);
     navigate("/");
-  }
+  };
+
+  // const handleMealNameInput = (e) => {
+  //   setMealName(e.target.value);
+  // };
+
+  // function handleIngridientInputChange(e) {
+  //   setCurrentInputIngridient(e.target.value);
+  // }
+
+  // const handleAddIngridientIcon = () => {
+  //   console.log("ingridient added");
+  //   setIngridientsList((prev) => [...prev, currentInputIngridient]);
+  //   setCurrentInputIngridient("");
+  // };
+
+  // function handleCreateMealSubmit(event) {
+  //   event.preventDefault();
+  //   const lastId = mealsData[mealsData.length - 1].id;
+  //   const newMeal = {
+  //     name: mealName,
+  //     ingridients: ingridientsList,
+  //     id: lastId + 1,
+  //   };
+  //   setMealsData((prevMealsData) => [...prevMealsData, newMeal]);
+  //   setIngridientsList([]);
+  //   navigate("/");
+  // }
 
   const handleCancelMealBtn = () => {
-    setIngridientsList([]);
-    currentInputIngridient("");
+    // setIngridientsList([]);
+    // currentInputIngridient("");
     navigate("/");
   };
 
@@ -101,17 +134,13 @@ function App() {
           path="/new_meal"
           element={
             <CreateMeal
+              handleMealChange={handleMealChange}
               meals={mealsData}
-              handleFormSubmit={handleCreateMealSubmit}
-              ingridientsList={ingridientsList}
-              handleMealNameInput={handleMealNameInput}
               handleCancelMealBtn={handleCancelMealBtn}
-              handleAddIngridientIcon={handleAddIngridientIcon}
-              handleIngridientInputChange={handleIngridientInputChange}
-              currentInputIngridient={currentInputIngridient}
             />
           }
         />
+        <Route exact path="/test" element={<Test />} />
         <Route exact path="/meals/:id/edit" element={<EditMeal />} />
       </Routes>
     </div>

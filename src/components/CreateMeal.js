@@ -4,6 +4,7 @@ import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRou
 import { useState } from "react";
 import IngridientsList from "./IngridientsList";
 import AddIngridient from "./AddIngridient";
+import MealForm2 from "./MealForm2";
 import MealForm from "./MealForm";
 
 export default function CreateMeal({
@@ -14,6 +15,7 @@ export default function CreateMeal({
   handleMealNameInput,
   handleCancelMealBtn,
   handleIngridientInputChange,
+  handleMealChange,
 }) {
   return (
     <>
@@ -21,7 +23,8 @@ export default function CreateMeal({
         Back home
       </Button>
       <Typography variant="h6">Add new meal</Typography>
-      <MealForm
+      <MealForm2 onChange={handleMealChange} />
+      {/* <MealForm
         onTitleInput={handleMealNameInput}
         handleFormSubmit={handleFormSubmit}
         handleAddIngridientIcon={handleAddIngridientIcon}
@@ -29,7 +32,7 @@ export default function CreateMeal({
         currentInputIngridient={currentInputIngridient}
         handleCancelMealBtn={handleCancelMealBtn}
         handleIngridientInputChange={handleIngridientInputChange}
-      />
+      /> */}
     </>
   );
 }
