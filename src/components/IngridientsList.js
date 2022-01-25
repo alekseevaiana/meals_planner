@@ -1,6 +1,6 @@
 import { Button, List, ListItem } from "@mui/material";
 
-export default function IngridientsList({ ingridients, handleDelete }) {
+export default function IngridientsList({ ingridients, handleDelete, type }) {
   // const handleDelete = (index) => {
   //   console.log("handle f*ing delete", index);
   // };
@@ -12,13 +12,15 @@ export default function IngridientsList({ ingridients, handleDelete }) {
             <ListItem key={index}>
               {ingridient}
               {/* {index !== ingridients.length - 1 ? ", " : ""} */}
-              <Button
-                variant="contained"
-                sx={{ ml: 2 }}
-                onClick={() => handleDelete(index)}
-              >
-                D
-              </Button>
+              {type === "form" && (
+                <Button
+                  variant="contained"
+                  sx={{ ml: 2 }}
+                  onClick={() => handleDelete(index)}
+                >
+                  D
+                </Button>
+              )}
             </ListItem>
           );
         })}

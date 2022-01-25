@@ -36,6 +36,7 @@ export default function AddIngridient({ ingridients, onChange, handleDelete }) {
         <IngridientsList
           ingridients={ingridients}
           handleDelete={handleDelete}
+          type="form"
         />
       </Box>
     </Box>
