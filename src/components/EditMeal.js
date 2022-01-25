@@ -1,6 +1,5 @@
-import { Typography, Button } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 import MealForm from "./MealForm";
 

@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate, Link } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./components/Home";
 import CreateMeal from "./components/CreateMeal";
 import MealPage from "./components/MealPage";
@@ -6,12 +6,6 @@ import { meals } from "./data.js";
 import { useState, useEffect } from "react";
 import EditMeal from "./components/EditMeal";
 import { Box } from "@mui/system";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import HomeIcon from "@mui/icons-material/Home";
-import AddCircleOutlineSharpIcon from "@mui/icons-material/AddCircleOutlineSharp";
-import AddSharpIcon from "@mui/icons-material/AddSharp";
 
 function App() {
   const [mealsData, setMealsData] = useState(() => {
@@ -117,29 +111,6 @@ function App() {
           />
         </Routes>
       </Box>
-      <BottomNavigation
-        showLabels
-        sx={{
-          position: "fixed",
-          bottom: 0,
-          width: "100%",
-          borderTop: "1px solid rgba(0, 0, 0, 0.12)",
-          boxShadow: "5px 10px rgba(0, 0, 0, 0.12)",
-        }}
-      >
-        <BottomNavigationAction
-          label="home"
-          icon={<HomeIcon />}
-          component={Link}
-          to={"/"}
-        />
-        <BottomNavigationAction
-          label="new meal"
-          icon={<AddSharpIcon />}
-          component={Link}
-          to={"/new_meal"}
-        />
-      </BottomNavigation>
     </Box>
   );
 }

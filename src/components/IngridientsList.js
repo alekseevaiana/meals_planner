@@ -1,9 +1,6 @@
 import { Button, List, ListItem } from "@mui/material";
 
 export default function IngridientsList({ ingridients, handleDelete, type }) {
-  // const handleDelete = (index) => {
-  //   console.log("handle f*ing delete", index);
-  // };
   return (
     <List>
       {ingridients &&
