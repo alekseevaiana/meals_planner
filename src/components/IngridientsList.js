@@ -1,4 +1,5 @@
 import { Button, List, ListItem } from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
 
 export default function IngridientsList({ ingridients, handleDelete, type }) {
   return (
@@ -8,15 +9,12 @@ export default function IngridientsList({ ingridients, handleDelete, type }) {
           return (
             <ListItem key={index}>
               {ingridient}
-              {/* {index !== ingridients.length - 1 ? ", " : ""} */}
               {type === "form" && (
-                <Button
-                  variant="contained"
+                <ClearIcon
                   sx={{ ml: 2 }}
                   onClick={() => handleDelete(index)}
-                >
-                  D
-                </Button>
+                  color="action"
+                />
               )}
             </ListItem>
           );

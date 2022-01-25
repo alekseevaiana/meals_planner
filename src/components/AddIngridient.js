@@ -2,6 +2,9 @@ import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRou
 import { useState } from "react";
 import { TextField, Box } from "@mui/material";
 import IngridientsList from "./IngridientsList";
+import AddIcon from "@mui/icons-material/Add";
+import InputAdornment from "@mui/material/InputAdornment";
+import OutlinedInput from "@mui/material/OutlinedInput";
 
 export default function AddIngridient({ ingridients, onChange, handleDelete }) {
   const [name, setName] = useState("");
@@ -23,15 +26,24 @@ export default function AddIngridient({ ingridients, onChange, handleDelete }) {
 
   return (
     <Box>
-      <TextField
-        id="outlined-basic"
-        label="Add ingridient"
-        variant="outlined"
-        onChange={(event) => setName(event.target.value)}
-        value={name}
-        onKeyPress={handleKeyPress}
-      />
-      <AddCircleOutlineRoundedIcon onClick={handleAdd} />
+      <Box sx={{ display: "flex", alignItems: "center" }}>
+        <OutlinedInput
+          id="outlined-basic"
+          label="Add ingridient"
+          variant="outlined"
+          onChange={(event) => setName(event.target.value)}
+          value={name}
+          onKeyPress={handleKeyPress}
+          endAdornment={
+            <InputAdornment position="end">
+              <AddIcon onClick={handleAdd} edge="end">
+                f
+              </AddIcon>
+            </InputAdornment>
+          }
+        />
+        {/* <AddIcon onClick={handleAdd} fontSize="large" /> */}
+      </Box>
       <Box sx={{ mb: 2 }}>
         <IngridientsList
           ingridients={ingridients}
