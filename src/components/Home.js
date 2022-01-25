@@ -33,7 +33,6 @@ export default function Home({ meals, handlePlanBtn, handleOpenMealBtnClick }) {
       <Box
         sx={{
           p: 2,
-          mb: 10,
           height: "100vh",
         }}
       >

@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Button, TextField, Box } from "@mui/material";
+import { Button, TextField, Box, BottomNavigation } from "@mui/material";
 import AddIngridient from "./AddIngridient";
 
 // value is meal {name, ingridients, id}
 export default function MealForm({ value, onChange }) {
+  console.log(value);
   const [name, setName] = useState(value ? value.name : "");
   const [ingridients, setIngridients] = useState(
     value ? value.ingridients : []
@@ -33,12 +34,7 @@ export default function MealForm({ value, onChange }) {
   };
 
   return (
-    <Box
-      component="form"
-      autoComplete="off"
-      onSubmit={handleSubmit}
-      sx={{ m: 2 }}
-    >
+    <Box component="form" autoComplete="off" onSubmit={handleSubmit}>
       <TextField
         id="outlined-basic"
         value={name}

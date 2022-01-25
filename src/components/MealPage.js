@@ -20,9 +20,6 @@ export default function MealPage({ mealsData, onDeleteClick }) {
 
   return (
     <>
-      <Button variant="contained" color="secondary" component={Link} to={"/"}>
-        Back home
-      </Button>
       <Typography variant="h6" component="h2">
         {currentMeal.name}
       </Typography>

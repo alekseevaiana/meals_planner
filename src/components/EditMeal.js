@@ -13,10 +13,6 @@ export default function EditMeal({ meals, handleMealChange }) {
 
   return (
     <>
-      {console.log("params =>", params)}
-      <Button variant="contained" color="secondary" component={Link} to={"/"}>
-        Back home
-      </Button>
       <Typography>Edit meal</Typography>
       <MealForm value={currentMeal} onChange={handleMealChange} />
     </>
