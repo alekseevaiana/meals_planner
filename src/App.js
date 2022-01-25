@@ -72,7 +72,7 @@ function App() {
 
   return (
     <Box className="App">
-      <Box sx={{ m: 2 }}>
+      <Box>
         <Routes>
           <Route
             exact

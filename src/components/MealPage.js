@@ -24,20 +24,24 @@ export default function MealPage({ mealsData, onDeleteClick }) {
         {currentMeal.name}
       </Typography>
       <IngridientsList ingridients={currentMeal.ingridients} />
+
+      <Button
+        variant="outlined"
+        color="secondary"
+        sx={{ mr: 2 }}
+        component={Link}
+        to={`/meals/${params.id}/edit`}
+        variant="contained"
+        color="secondary"
+      >
+        Edit
+      </Button>
       <Button
         variant="outlined"
         color="error"
         onClick={() => onDeleteClick(currentMeal.id)}
       >
         Delete
-      </Button>
-      <Button
-        variant="outlined"
-        color="secondary"
-        component={Link}
-        to={`/meals/${params.id}/edit`}
-      >
-        Edit
       </Button>
     </>
   );

@@ -6,12 +6,6 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 export default function NavigationPannel() {
-  const [value, setValue] = useState(0);
-
-  const handleClick = (event) => {
-    console.log("clicked bottom nav", event.target.value);
-  };
-
   return (
     <BottomNavigation
       showLabels
@@ -20,17 +14,9 @@ export default function NavigationPannel() {
         bottom: 0,
         width: "100%",
         borderTop: "1px solid rgba(0, 0, 0, 0.12)",
-        boxShadow: "5px 10px rgba(0, 0, 0, 0.12)",
+        boxShadow: 3,
       }}
-      value={value}
-      onChange={(e) => handleClick(e)}
     >
-      <BottomNavigationAction
-        label="home"
-        icon={<HomeIcon />}
-        component={Link}
-        to={"/"}
-      />
       <BottomNavigationAction
         label="new meal"
         icon={<AddSharpIcon />}
