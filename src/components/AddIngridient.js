@@ -3,7 +3,7 @@ import { useState } from "react";
 import { TextField, Box } from "@mui/material";
 import IngridientsList from "./IngridientsList";
 
-export default function AddIngridient({ ingridients, onChange }) {
+export default function AddIngridient({ ingridients, onChange, handleDelete }) {
   const [name, setName] = useState("");
   const handleAdd = () => {
     const updated = [...ingridients];
@@ -13,6 +13,7 @@ export default function AddIngridient({ ingridients, onChange }) {
     setName("");
     onChange(updated);
   };
+
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -32,7 +33,10 @@ export default function AddIngridient({ ingridients, onChange }) {
       />
       <AddCircleOutlineRoundedIcon onClick={handleAdd} />
       <Box sx={{ mb: 2 }}>
-        <IngridientsList ingridients={ingridients} />
+        <IngridientsList
+          ingridients={ingridients}
+          handleDelete={handleDelete}
+        />
       </Box>
     </Box>
   );

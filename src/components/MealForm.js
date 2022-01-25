@@ -18,6 +18,20 @@ export default function MealForm({ value, onChange }) {
     });
   };
 
+  const handleDelete = (ingridientIndex) => {
+    const data = [];
+    let index = 0;
+    for (const item of ingridients) {
+      if (index === ingridientIndex) {
+        index++;
+      } else {
+        data.push(item);
+        index++;
+      }
+    }
+    setIngridients(data);
+  };
+
   return (
     <Box
       component="form"
@@ -33,7 +47,11 @@ export default function MealForm({ value, onChange }) {
         sx={{ mb: 2 }}
         onChange={(event) => setName(event.target.value)}
       />
-      <AddIngridient ingridients={ingridients} onChange={setIngridients} />
+      <AddIngridient
+        ingridients={ingridients}
+        onChange={setIngridients}
+        handleDelete={handleDelete}
+      />
       <Box>
         <Button variant="contained" color="success" type="submit">
           Add
