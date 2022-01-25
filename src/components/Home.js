@@ -36,7 +36,7 @@ export default function Home({ meals, handlePlanBtn, handleOpenMealBtnClick }) {
           height: "100vh",
         }}
       >
-        <Box className={classes.headerLinks} sx={{ mb: 2 }}>
+        <Box className={classes.headerLinks}>
           <NavLink to="/">
             <Box className={classes.linkText} activeClassName="active">
               Meals

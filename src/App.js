@@ -77,47 +77,52 @@ function App() {
   };
 
   return (
-    <Box className="App" sx={{ m: 2 }}>
-      <Routes>
-        <Route
-          exact
-          path="*"
-          element={
-            <Home
-              meals={mealsData}
-              handlePlanBtn={handleToggleToPlanBtn}
-              handleOpenMealBtnClick={handleOpenMealBtnClick}
-            />
-          }
-        />
-        <Route
-          exact
-          path="/meals/:id"
-          element={
-            <MealPage mealsData={mealsData} onDeleteClick={onDeleteClick} />
-          }
-        />
-        <Route
-          exact
-          path="/new_meal"
-          element={
-            <CreateMeal handleMealChange={handleMealChange} meals={mealsData} />
-          }
-        />
-        <Route
-          exact
-          path="/meals/:id/edit"
-          element={
-            <EditMeal meals={mealsData} handleMealChange={handleMealChange} />
-          }
-        />
-      </Routes>
+    <Box className="App">
+      <Box sx={{ m: 2 }}>
+        <Routes>
+          <Route
+            exact
+            path="*"
+            element={
+              <Home
+                meals={mealsData}
+                handlePlanBtn={handleToggleToPlanBtn}
+                handleOpenMealBtnClick={handleOpenMealBtnClick}
+              />
+            }
+          />
+          <Route
+            exact
+            path="/meals/:id"
+            element={
+              <MealPage mealsData={mealsData} onDeleteClick={onDeleteClick} />
+            }
+          />
+          <Route
+            exact
+            path="/new_meal"
+            element={
+              <CreateMeal
+                handleMealChange={handleMealChange}
+                meals={mealsData}
+              />
+            }
+          />
+          <Route
+            exact
+            path="/meals/:id/edit"
+            element={
+              <EditMeal meals={mealsData} handleMealChange={handleMealChange} />
+            }
+          />
+        </Routes>
+      </Box>
       <BottomNavigation
         showLabels
         sx={{
           position: "fixed",
           bottom: 0,
-          width: 1.0,
+          width: "100%",
           borderTop: "1px solid rgba(0, 0, 0, 0.12)",
           boxShadow: "5px 10px rgba(0, 0, 0, 0.12)",
         }}
@@ -128,7 +133,12 @@ function App() {
           component={Link}
           to={"/"}
         />
-        <BottomNavigationAction label="new meal" icon={<AddSharpIcon />} />
+        <BottomNavigationAction
+          label="new meal"
+          icon={<AddSharpIcon />}
+          component={Link}
+          to={"/new_meal"}
+        />
       </BottomNavigation>
     </Box>
   );

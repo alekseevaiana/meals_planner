@@ -9,15 +9,6 @@ export default function MealsList({
 }) {
   return (
     <>
-      <Button
-        variant="contained"
-        color="secondary"
-        component={Link}
-        to={"/new_meal"}
-        sx={{ mb: 2 }}
-      >
-        Add new meal
-      </Button>
       {meals.map((item, index) => {
         return (
           <Box key={index}>
