@@ -26,7 +26,6 @@ function App() {
 
   const handleMealChange = (updatedMeal) => {
     const lastId = mealsData[mealsData.length - 1].id;
-    // if there is no id
     if (updatedMeal.id) {
       setMealsData((prevMealsData) => {
         const data = [];
@@ -43,7 +42,7 @@ function App() {
       console.log("there is not id");
       updatedMeal = {
         ...updatedMeal,
-        id: lastId + 1, // should be last id, can be UUID
+        id: lastId + 1,
       };
       setMealsData((prevMealsData) => [...prevMealsData, updatedMeal]);
     }

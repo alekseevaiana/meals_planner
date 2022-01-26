@@ -7,6 +7,22 @@ export default function MealsList({
   handlePlanBtn,
   handleOpenMealBtnClick,
 }) {
+  const searchValues = ["rice", "meat"];
+
+  const filteredMeals = meals.filter((meal) => {
+    const ingridients = meal.ingridients;
+    let index = 0;
+    searchValues.forEach((value) => {
+      if (ingridients.includes(value)) {
+        index++; //
+      }
+    });
+    if (index === searchValues.length) {
+      return meal;
+    }
+  });
+
+  console.log(filteredMeals);
   return (
     <>
       <Box sx={{ m: 2 }}>
