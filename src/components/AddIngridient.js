@@ -3,8 +3,10 @@ import { useState } from "react";
 import { TextField, Box } from "@mui/material";
 import IngridientsList from "./IngridientsList";
 import AddIcon from "@mui/icons-material/Add";
+import { IconButton } from "@mui/icons-material/";
+
 import InputAdornment from "@mui/material/InputAdornment";
-import OutlinedInput from "@mui/material/OutlinedInput";
+import { OutlinedInput, InputLabel, FormControl } from "@mui/material";
 
 export default function AddIngridient({ ingridients, onChange, handleDelete }) {
   const [name, setName] = useState("");
@@ -27,22 +29,27 @@ export default function AddIngridient({ ingridients, onChange, handleDelete }) {
   return (
     <Box>
       <Box sx={{ display: "flex", alignItems: "center" }}>
-        <OutlinedInput
-          id="outlined-basic"
-          label="Add ingridient"
-          variant="outlined"
-          onChange={(event) => setName(event.target.value)}
-          value={name}
-          onKeyPress={handleKeyPress}
-          endAdornment={
-            <InputAdornment position="end">
-              <AddIcon onClick={handleAdd} edge="end">
-                f
-              </AddIcon>
-            </InputAdornment>
-          }
-        />
-        {/* <AddIcon onClick={handleAdd} fontSize="large" /> */}
+        <FormControl variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-ingridient">
+            Add ingridient
+          </InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-ingridient"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            onKeyPress={handleKeyPress}
+            label="Add ingridient"
+            endAdornment={
+              <InputAdornment position="end">
+                <AddIcon
+                  aria-label="toggle ingridient visibility"
+                  onClick={handleAdd}
+                  edge="end"
+                />
+              </InputAdornment>
+            }
+          />
+        </FormControl>
       </Box>
       <Box sx={{ mb: 2 }}>
         <IngridientsList

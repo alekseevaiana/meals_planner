@@ -4,7 +4,6 @@ import AddIngridient from "./AddIngridient";
 
 // value is meal {name, ingridients, id}
 export default function MealForm({ value, onChange }) {
-  console.log(value);
   const [name, setName] = useState(value ? value.name : "");
   const [ingridients, setIngridients] = useState(
     value ? value.ingridients : []
@@ -23,12 +22,10 @@ export default function MealForm({ value, onChange }) {
     const data = [];
     let index = 0;
     for (const item of ingridients) {
-      if (index === ingridientIndex) {
-        index++;
-      } else {
+      if (index !== ingridientIndex) {
         data.push(item);
-        index++;
       }
+      index++;
     }
     setIngridients(data);
   };
