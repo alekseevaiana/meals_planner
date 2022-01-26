@@ -70,7 +70,7 @@ function App() {
   };
 
   return (
-    <Box className="App" sx={{ pb: 7 }}>
+    <Box className="App" sx={{ pb: 7, pt: 3 }}>
       <Routes>
         <Route
           exact
