@@ -4,9 +4,14 @@ import HomeIcon from "@mui/icons-material/Home";
 import AddSharpIcon from "@mui/icons-material/AddSharp";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Paper } from "@material-ui/core";
 
 export default function NavigationPannel() {
   return (
+    // <Paper
+    //   sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+    //   elevation={3}
+    // >
     <BottomNavigation
       showLabels
       sx={{
@@ -24,5 +29,6 @@ export default function NavigationPannel() {
         to={"/new_meal"}
       />
     </BottomNavigation>
+    // </Paper>
   );
 }

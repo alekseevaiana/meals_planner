@@ -70,46 +70,41 @@ function App() {
   };
 
   return (
-    <Box className="App">
-      <Box>
-        <Routes>
-          <Route
-            exact
-            path="*"
-            element={
-              <Home
-                meals={mealsData}
-                handlePlanBtn={handleToggleToPlanBtn}
-                handleOpenMealBtnClick={handleOpenMealBtnClick}
-              />
-            }
-          />
-          <Route
-            exact
-            path="/meals/:id"
-            element={
-              <MealPage mealsData={mealsData} onDeleteClick={onDeleteClick} />
-            }
-          />
-          <Route
-            exact
-            path="/new_meal"
-            element={
-              <CreateMeal
-                handleMealChange={handleMealChange}
-                meals={mealsData}
-              />
-            }
-          />
-          <Route
-            exact
-            path="/meals/:id/edit"
-            element={
-              <EditMeal meals={mealsData} handleMealChange={handleMealChange} />
-            }
-          />
-        </Routes>
-      </Box>
+    <Box className="App" sx={{ pb: 7 }}>
+      <Routes>
+        <Route
+          exact
+          path="*"
+          element={
+            <Home
+              meals={mealsData}
+              handlePlanBtn={handleToggleToPlanBtn}
+              handleOpenMealBtnClick={handleOpenMealBtnClick}
+            />
+          }
+        />
+        <Route
+          exact
+          path="/meals/:id"
+          element={
+            <MealPage mealsData={mealsData} onDeleteClick={onDeleteClick} />
+          }
+        />
+        <Route
+          exact
+          path="/new_meal"
+          element={
+            <CreateMeal handleMealChange={handleMealChange} meals={mealsData} />
+          }
+        />
+        <Route
+          exact
+          path="/meals/:id/edit"
+          element={
+            <EditMeal meals={mealsData} handleMealChange={handleMealChange} />
+          }
+        />
+      </Routes>
     </Box>
   );
 }

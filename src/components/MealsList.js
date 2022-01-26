@@ -7,7 +7,7 @@ export default function MealsList({
   handlePlanBtn,
   handleOpenMealBtnClick,
 }) {
-  const searchValues = ["rice", "meat"];
+  const searchValues = [];
 
   const filteredMeals = meals.filter((meal) => {
     const ingridients = meal.ingridients;
@@ -26,7 +26,7 @@ export default function MealsList({
   return (
     <>
       <Box sx={{ m: 2 }}>
-        {meals.map((item, index) => {
+        {filteredMeals.map((item, index) => {
           return (
             <Box key={index}>
               <MealsItem
