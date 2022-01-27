@@ -8,9 +8,9 @@ export default function MealsList({
   meals,
   handlePlanBtn,
   handleOpenMealBtnClick,
+  allIngridients,
 }) {
   const [search, setSearch] = useState([]);
-  const ingridientsList = ["rice", "meat", "pasta", "beef"];
 
   const filteredMeals = meals.filter((meal) => {
     const ingridients = meal.ingridients;
@@ -28,11 +28,9 @@ export default function MealsList({
   const getValue = (newValue) => {
     setSearch(newValue);
   };
-
   return (
     <>
-      <Tags ingridients={ingridientsList} onChange={getValue} />
-      {console.log("search values ===> ", search)}
+      <Tags ingridients={allIngridients} onChange={getValue} />
       <Box sx={{ m: 2 }}>
         {filteredMeals.map((item, index) => {
           return (

@@ -9,12 +9,23 @@ import { Box } from "@mui/system";
 
 function App() {
   const [mealsData, setMealsData] = useState(() => {
-    const saved = localStorage.getItem("mealsData");
-    if (saved) {
-      const initialValue = JSON.parse(saved);
+    const savedMealsData = localStorage.getItem("mealsData");
+
+    if (savedMealsData) {
+      const initialValue = JSON.parse(savedMealsData);
       return initialValue;
     } else {
       return meals;
+    }
+  });
+
+  const [allIngridients, setAllIngridients] = useState(() => {
+    const savedAllIngridients = localStorage.getItem("allIngridients");
+    if (savedAllIngridients) {
+      const initialValue = JSON.parse(savedAllIngridients);
+      return initialValue;
+    } else {
+      return allIngridients;
     }
   });
 
@@ -22,11 +33,24 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("mealsData", JSON.stringify(mealsData));
-  }, [mealsData]);
+    localStorage.setItem("allIngridients", JSON.stringify(allIngridients));
+  }, [mealsData, allIngridients]);
+
+  const handleNewToAllIngridients = (meal) => {
+    meal.ingridients.forEach((mealIngridient) => {
+      mealIngridient = mealIngridient.toLowerCase();
+      if (!allIngridients.includes(mealIngridient)) {
+        console.log("NEW INGRIDIENT");
+        setAllIngridients((prev) => [...prev, mealIngridient]);
+      }
+    });
+  };
 
   const handleMealChange = (updatedMeal) => {
     const lastId = mealsData[mealsData.length - 1].id;
+    // update old meal
     if (updatedMeal.id) {
+      console.log("update old meal");
       setMealsData((prevMealsData) => {
         const data = [];
         for (const meal of prevMealsData) {
@@ -36,16 +60,18 @@ function App() {
             data.push(meal);
           }
         }
+        console.log("updated meal", data);
         return data;
       });
     } else {
-      console.log("there is not id");
+      console.log("new meal? inside else");
       updatedMeal = {
         ...updatedMeal,
         id: lastId + 1,
       };
       setMealsData((prevMealsData) => [...prevMealsData, updatedMeal]);
     }
+    handleNewToAllIngridients(updatedMeal);
     navigate("/");
   };
 
@@ -68,7 +94,6 @@ function App() {
     setMealsData(newMealsData);
     navigate("/");
   };
-
   return (
     <Box className="App" sx={{ pb: 7, pt: 3 }}>
       <Routes>
@@ -80,6 +105,7 @@ function App() {
               meals={mealsData}
               handlePlanBtn={handleToggleToPlanBtn}
               handleOpenMealBtnClick={handleOpenMealBtnClick}
+              allIngridients={allIngridients}
             />
           }
         />

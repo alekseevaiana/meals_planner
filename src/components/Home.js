@@ -25,9 +25,15 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function Home({ meals, handlePlanBtn, handleOpenMealBtnClick }) {
+export default function Home({
+  meals,
+  handlePlanBtn,
+  handleOpenMealBtnClick,
+  allIngridients,
+}) {
   const classes = useStyles();
   const mealsInPlan = meals.filter((meal) => meal.inPlan === true);
+
   return (
     <>
       <Box className={classes.headerLinks} sx={{ mb: 3 }}>
@@ -51,6 +57,7 @@ export default function Home({ meals, handlePlanBtn, handleOpenMealBtnClick }) {
               meals={meals}
               handlePlanBtn={handlePlanBtn}
               handleOpenMealBtnClick={handleOpenMealBtnClick}
+              allIngridients={allIngridients}
             />
           }
         />
