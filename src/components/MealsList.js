@@ -29,7 +29,7 @@ export default function MealsList({
     setSearch(newValue);
   };
   return (
-    <>
+    <Box>
       <Tags ingridients={allIngridients} onChange={getValue} />
       <Box sx={{ m: 2 }}>
         {filteredMeals.map((item, index) => {
@@ -46,6 +46,6 @@ export default function MealsList({
         })}
       </Box>
       <NavigationPannel />
-    </>
+    </Box>
   );
 }

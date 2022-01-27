@@ -35,7 +35,7 @@ export default function Home({
   const mealsInPlan = meals.filter((meal) => meal.inPlan === true);
 
   return (
-    <>
+    <Box>
       <Box className={classes.headerLinks} sx={{ mb: 3 }}>
         <NavLink to="/">
           <Box className={classes.linkText} activeClassName="active">
@@ -72,6 +72,6 @@ export default function Home({
           }
         />
       </Routes>
-    </>
+    </Box>
   );
 }
