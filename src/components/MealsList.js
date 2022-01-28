@@ -28,7 +28,6 @@ export default function MealsList({
   });
 
   const getValue = (newValue) => {
-    //newValue.toLowerCase();
     setSearch(newValue);
   };
   return (

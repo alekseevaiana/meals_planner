@@ -50,7 +50,6 @@ function App() {
     const lastId = mealsData[mealsData.length - 1].id;
     // update old meal
     if (updatedMeal.id) {
-      console.log("update old meal");
       setMealsData((prevMealsData) => {
         const data = [];
         for (const meal of prevMealsData) {
@@ -60,11 +59,9 @@ function App() {
             data.push(meal);
           }
         }
-        console.log("updated meal", data);
         return data;
       });
     } else {
-      console.log("new meal? inside else");
       updatedMeal = {
         ...updatedMeal,
         id: lastId + 1,
