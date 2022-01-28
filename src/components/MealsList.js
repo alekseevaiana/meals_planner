@@ -16,9 +16,11 @@ export default function MealsList({
     const ingridients = meal.ingridients;
     let index = 0;
     search.forEach((value) => {
-      if (ingridients.includes(value)) {
-        index++;
-      }
+      ingridients.forEach((ingridient) => {
+        if (ingridient.toLowerCase() === value.toLowerCase()) {
+          index++;
+        }
+      });
     });
     if (index === search.length) {
       return meal;
@@ -26,6 +28,7 @@ export default function MealsList({
   });
 
   const getValue = (newValue) => {
+    //newValue.toLowerCase();
     setSearch(newValue);
   };
   return (
