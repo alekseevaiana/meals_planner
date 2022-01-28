@@ -4,6 +4,7 @@ export default function PlanMealsList({
   meals,
   handlePlanBtn,
   handleOpenMealBtnClick,
+  allIngridients,
 }) {
   return (
     <>
@@ -11,6 +12,7 @@ export default function PlanMealsList({
         meals={meals}
         handlePlanBtn={handlePlanBtn}
         handleOpenMealBtnClick={handleOpenMealBtnClick}
+        allIngridients={allIngridients}
       />
     </>
   );

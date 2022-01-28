@@ -68,6 +68,7 @@ export default function Home({
               meals={mealsInPlan}
               handlePlanBtn={handlePlanBtn}
               handleOpenMealBtnClick={handleOpenMealBtnClick}
+              allIngridients={allIngridients}
             />
           }
         />
