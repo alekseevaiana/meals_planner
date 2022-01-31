@@ -1,5 +1,25 @@
 const buy_ingridients = ["meat", "tomato paste", "parmezan", "milk"];
 const pantry_ingridients = ["spaghetti", "rice", "shishito pepper"];
+
+// meal.ingridients.forEach((mealIngridient) => {
+//   mealIngridient = mealIngridient.toLowerCase();
+//   if (!allIngridients.includes(mealIngridient)) {
+//     setAllIngridients((prev) => [...prev, mealIngridient]);
+//   }
+// });
+
+// const getAllIngridients = (meals) => {
+//   let allIngridients = [];
+//   meals.forEach(meal => {
+//     meal.ingridients.forEach(ingridient => {
+//       allIngridients.forEach(item => {
+//         if (ingridient )
+//       })
+//     })
+//   })
+
+// };
+
 export const meals = [
   {
     id: 1,
@@ -173,6 +193,8 @@ export const meals = [
     ],
   },
 ];
+
+export const allIngridientsData = [];
 
 // 1. ["spaghetti", "shishito pepper"] 3 pentry
 // 2. [ "rice", "meat", "souce", "onion", "carrot", "shishito peppers"] 2 pentry, 1 buy, 3 non

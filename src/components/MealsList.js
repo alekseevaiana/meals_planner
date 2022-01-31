@@ -32,7 +32,9 @@ export default function MealsList({
   };
   return (
     <Box>
-      <Tags ingridients={allIngridients} onChange={getValue} />
+      {allIngridients && (
+        <Tags ingridients={allIngridients} onChange={getValue} />
+      )}
       <Box sx={{ m: 2 }}>
         {filteredMeals.map((item, index) => {
           return (

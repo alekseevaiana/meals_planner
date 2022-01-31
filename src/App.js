@@ -2,32 +2,33 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./components/Home";
 import CreateMeal from "./components/CreateMeal";
 import MealPage from "./components/MealPage";
-import { meals } from "./data.js";
+import { meals, allIngridientsData } from "./data.js";
 import { useState, useEffect } from "react";
 import EditMeal from "./components/EditMeal";
 import { Box } from "@mui/system";
 
+function getFromStorage(name, defaultValue) {
+  const str = localStorage.getItem(name);
+  if (!str) {
+    return defaultValue;
+  }
+
+  try {
+    return JSON.parse(str);
+  } catch (e) {
+    console.warn("Cant parse json: " + name);
+    return defaultValue;
+  }
+}
+
 function App() {
-  const [mealsData, setMealsData] = useState(() => {
-    const savedMealsData = localStorage.getItem("mealsData");
+  const [mealsData, setMealsData] = useState(() =>
+    getFromStorage("mealsData", meals)
+  );
 
-    if (savedMealsData) {
-      const initialValue = JSON.parse(savedMealsData);
-      return initialValue;
-    } else {
-      return meals;
-    }
-  });
-
-  const [allIngridients, setAllIngridients] = useState(() => {
-    const savedAllIngridients = localStorage.getItem("allIngridients");
-    if (savedAllIngridients) {
-      const initialValue = JSON.parse(savedAllIngridients);
-      return initialValue;
-    } else {
-      return allIngridients;
-    }
-  });
+  const [allIngridients, setAllIngridients] = useState(() =>
+    getFromStorage("allIngridients", allIngridientsData)
+  );
 
   const navigate = useNavigate();
 
@@ -40,7 +41,6 @@ function App() {
     meal.ingridients.forEach((mealIngridient) => {
       mealIngridient = mealIngridient.toLowerCase();
       if (!allIngridients.includes(mealIngridient)) {
-        console.log("NEW INGRIDIENT");
         setAllIngridients((prev) => [...prev, mealIngridient]);
       }
     });
