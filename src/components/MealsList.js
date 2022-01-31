@@ -12,6 +12,7 @@ export default function MealsList({
 }) {
   const [search, setSearch] = useState([]);
 
+  // filter meals by multiple tags in search input
   const filteredMeals = meals.filter((meal) => {
     const ingridients = meal.ingridients;
     let index = 0;
@@ -27,13 +28,10 @@ export default function MealsList({
     }
   });
 
-  const getValue = (newValue) => {
-    setSearch(newValue);
-  };
   return (
     <Box>
       {allIngridients && (
-        <Tags ingridients={allIngridients} onChange={getValue} />
+        <Tags ingridients={allIngridients} onChange={setSearch} />
       )}
       <Box sx={{ m: 2 }}>
         {filteredMeals.map((item, index) => {

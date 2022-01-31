@@ -37,7 +37,7 @@ function App() {
     localStorage.setItem("allIngridients", JSON.stringify(allIngridients));
   }, [mealsData, allIngridients]);
 
-  const handleNewToAllIngridients = (meal) => {
+  const storeAddedIngridients = (meal) => {
     meal.ingridients.forEach((mealIngridient) => {
       mealIngridient = mealIngridient.toLowerCase();
       if (!allIngridients.includes(mealIngridient)) {
@@ -68,7 +68,7 @@ function App() {
       };
       setMealsData((prevMealsData) => [...prevMealsData, updatedMeal]);
     }
-    handleNewToAllIngridients(updatedMeal);
+    storeAddedIngridients(updatedMeal);
     navigate("/");
   };
 
