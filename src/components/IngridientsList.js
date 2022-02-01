@@ -10,7 +10,7 @@ export default function IngridientsList({ ingridients, handleDelete, type }) {
             <ListItem
               key={index}
               sx={{
-                "text-transform": "capitalize",
+                textTransform: "capitalize",
                 border: 1,
                 borderColor: "grey.400",
                 borderRadius: 1,

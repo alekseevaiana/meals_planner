@@ -24,7 +24,7 @@ export default function MealsItem({
         <Typography
           variant="h6"
           component="h3"
-          sx={{ mb: 1, "text-transform": "capitalize" }}
+          sx={{ mb: 1, textTransform: "capitalize" }}
         >
           {item.name}
         </Typography>
