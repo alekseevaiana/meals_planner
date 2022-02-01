@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 
 import MealForm from "./MealForm";
@@ -11,9 +11,11 @@ export default function EditMeal({ meals, handleMealChange }) {
   const currentMeal = meals.find((meal) => meal.id === paramId);
 
   return (
-    <>
-      <Typography>Edit meal</Typography>
+    <Box sx={{ m: 2 }}>
+      <Typography sx={{ mb: 3 }} variant="h6" color="primary.dark">
+        Edit meal
+      </Typography>
       <MealForm value={currentMeal} onChange={handleMealChange} />
-    </>
+    </Box>
   );
 }

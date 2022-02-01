@@ -4,14 +4,18 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { HashRouter } from "react-router-dom";
+import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import { theme } from "./theme";
 
 ReactDOM.render(
   <React.StrictMode>
-    <HashRouter
-    // basename={process.env.PUBLIC_URL}
-    >
-      <App />
-    </HashRouter>
+    <ThemeProvider theme={theme}>
+      <HashRouter
+      // basename={process.env.PUBLIC_URL}
+      >
+        <App />
+      </HashRouter>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

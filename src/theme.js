@@ -17,5 +17,6 @@ export const theme = createTheme({
     text: {
       h1: "#23036A",
     },
+    typography: {},
   },
 });

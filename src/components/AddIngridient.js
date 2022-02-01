@@ -30,7 +30,7 @@ export default function AddIngridient({ ingridients, onChange, handleDelete }) {
   return (
     <Box>
       <Box sx={{ display: "flex", alignItems: "center" }}>
-        <FormControl variant="outlined">
+        <FormControl variant="outlined" sx={{ width: "100%" }}>
           <InputLabel htmlFor="outlined-adornment-ingridient">
             Add ingridient
           </InputLabel>
