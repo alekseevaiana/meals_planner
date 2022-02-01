@@ -2,31 +2,53 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./components/Home";
 import CreateMeal from "./components/CreateMeal";
 import MealPage from "./components/MealPage";
-import { meals } from "./data.js";
+import { meals, allIngridientsData } from "./data.js";
 import { useState, useEffect } from "react";
 import EditMeal from "./components/EditMeal";
 import { Box } from "@mui/system";
 
+function getFromStorage(name, defaultValue) {
+  const str = localStorage.getItem(name);
+  if (!str) {
+    return defaultValue;
+  }
+
+  try {
+    return JSON.parse(str);
+  } catch (e) {
+    console.warn("Cant parse json: " + name);
+    return defaultValue;
+  }
+}
+
 function App() {
-  const [mealsData, setMealsData] = useState(() => {
-    const saved = localStorage.getItem("mealsData");
-    if (saved) {
-      const initialValue = JSON.parse(saved);
-      return initialValue;
-    } else {
-      return meals;
-    }
-  });
+  const [mealsData, setMealsData] = useState(() =>
+    getFromStorage("mealsData", meals)
+  );
+
+  const [allIngridients, setAllIngridients] = useState(() =>
+    getFromStorage("allIngridients", allIngridientsData)
+  );
 
   const navigate = useNavigate();
 
   useEffect(() => {
     localStorage.setItem("mealsData", JSON.stringify(mealsData));
-  }, [mealsData]);
+    localStorage.setItem("allIngridients", JSON.stringify(allIngridients));
+  }, [mealsData, allIngridients]);
+
+  const storeAddedIngridients = (meal) => {
+    meal.ingridients.forEach((mealIngridient) => {
+      mealIngridient = mealIngridient.toLowerCase();
+      if (!allIngridients.includes(mealIngridient)) {
+        setAllIngridients((prev) => [...prev, mealIngridient]);
+      }
+    });
+  };
 
   const handleMealChange = (updatedMeal) => {
     const lastId = mealsData[mealsData.length - 1].id;
-    // if there is no id
+    // update old meal
     if (updatedMeal.id) {
       setMealsData((prevMealsData) => {
         const data = [];
@@ -40,13 +62,13 @@ function App() {
         return data;
       });
     } else {
-      console.log("there is not id");
       updatedMeal = {
         ...updatedMeal,
-        id: lastId + 1, // should be last id, can be UUID
+        id: lastId + 1,
       };
       setMealsData((prevMealsData) => [...prevMealsData, updatedMeal]);
     }
+    storeAddedIngridients(updatedMeal);
     navigate("/");
   };
 
@@ -69,48 +91,43 @@ function App() {
     setMealsData(newMealsData);
     navigate("/");
   };
-
   return (
-    <Box className="App">
-      <Box>
-        <Routes>
-          <Route
-            exact
-            path="*"
-            element={
-              <Home
-                meals={mealsData}
-                handlePlanBtn={handleToggleToPlanBtn}
-                handleOpenMealBtnClick={handleOpenMealBtnClick}
-              />
-            }
-          />
-          <Route
-            exact
-            path="/meals/:id"
-            element={
-              <MealPage mealsData={mealsData} onDeleteClick={onDeleteClick} />
-            }
-          />
-          <Route
-            exact
-            path="/new_meal"
-            element={
-              <CreateMeal
-                handleMealChange={handleMealChange}
-                meals={mealsData}
-              />
-            }
-          />
-          <Route
-            exact
-            path="/meals/:id/edit"
-            element={
-              <EditMeal meals={mealsData} handleMealChange={handleMealChange} />
-            }
-          />
-        </Routes>
-      </Box>
+    <Box className="App" sx={{ pb: 7, pt: 3 }}>
+      <Routes>
+        <Route
+          exact
+          path="*"
+          element={
+            <Home
+              meals={mealsData}
+              handlePlanBtn={handleToggleToPlanBtn}
+              handleOpenMealBtnClick={handleOpenMealBtnClick}
+              allIngridients={allIngridients}
+            />
+          }
+        />
+        <Route
+          exact
+          path="/meals/:id"
+          element={
+            <MealPage mealsData={mealsData} onDeleteClick={onDeleteClick} />
+          }
+        />
+        <Route
+          exact
+          path="/new_meal"
+          element={
+            <CreateMeal handleMealChange={handleMealChange} meals={mealsData} />
+          }
+        />
+        <Route
+          exact
+          path="/meals/:id/edit"
+          element={
+            <EditMeal meals={mealsData} handleMealChange={handleMealChange} />
+          }
+        />
+      </Routes>
     </Box>
   );
 }

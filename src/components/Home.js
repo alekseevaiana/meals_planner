@@ -25,52 +25,54 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function Home({ meals, handlePlanBtn, handleOpenMealBtnClick }) {
+export default function Home({
+  meals,
+  handlePlanBtn,
+  handleOpenMealBtnClick,
+  allIngridients,
+}) {
   const classes = useStyles();
   const mealsInPlan = meals.filter((meal) => meal.inPlan === true);
+
   return (
-    <>
-      <Box
-        sx={{
-          height: "100vh",
-        }}
-      >
-        <Box className={classes.headerLinks} sx={{ mb: 3 }}>
-          <NavLink to="/">
-            <Box className={classes.linkText} activeClassName="active">
-              Meals
-            </Box>
-          </NavLink>
-          <NavLink to="/plan">
-            <Box className={classes.linkText} activeClassName="active">
-              Plan
-            </Box>
-          </NavLink>
-        </Box>
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <MealsList
-                meals={meals}
-                handlePlanBtn={handlePlanBtn}
-                handleOpenMealBtnClick={handleOpenMealBtnClick}
-              />
-            }
-          />
-          <Route
-            path="/plan"
-            element={
-              <PlanMealsList
-                meals={mealsInPlan}
-                handlePlanBtn={handlePlanBtn}
-                handleOpenMealBtnClick={handleOpenMealBtnClick}
-              />
-            }
-          />
-        </Routes>
+    <Box>
+      <Box className={classes.headerLinks} sx={{ mb: 3 }}>
+        <NavLink to="/">
+          <Box className={classes.linkText} activeClassName="active">
+            Meals
+          </Box>
+        </NavLink>
+        <NavLink to="/plan">
+          <Box className={classes.linkText} activeClassName="active">
+            Plan
+          </Box>
+        </NavLink>
       </Box>
-    </>
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <MealsList
+              meals={meals}
+              handlePlanBtn={handlePlanBtn}
+              handleOpenMealBtnClick={handleOpenMealBtnClick}
+              allIngridients={allIngridients}
+            />
+          }
+        />
+        <Route
+          path="/plan"
+          element={
+            <PlanMealsList
+              meals={mealsInPlan}
+              handlePlanBtn={handlePlanBtn}
+              handleOpenMealBtnClick={handleOpenMealBtnClick}
+              allIngridients={allIngridients}
+            />
+          }
+        />
+      </Routes>
+    </Box>
   );
 }
