@@ -4,6 +4,18 @@ import NavigationPannel from "./NavigationPannel";
 import Tags from "./Tags";
 import { useState } from "react";
 
+function isSameCaseInsesitive(s1, s2) {
+  return s1.toLowerCase() === s2.toLowerCase();
+}
+
+function hasString(array, str) {
+  return array.some((v) => isSameCaseInsesitive(v, str));
+}
+
+function hasAll(target, search) {
+  return search.every((s) => hasString(target, s));
+}
+
 export default function MealsList({
   meals,
   handlePlanBtn,
@@ -12,21 +24,9 @@ export default function MealsList({
 }) {
   const [search, setSearch] = useState([]);
 
-  // filter meals by multiple tags in search input
-  const filteredMeals = meals.filter((meal) => {
-    const ingridients = meal.ingridients;
-    let index = 0;
-    search.forEach((value) => {
-      ingridients.forEach((ingridient) => {
-        if (ingridient.toLowerCase() === value.toLowerCase()) {
-          index++;
-        }
-      });
-    });
-    if (index === search.length) {
-      return meal;
-    }
-  });
+  const filteredMeals = meals.filter((meal) =>
+    hasAll(meal.ingridients, search)
+  );
 
   return (
     <Box>
