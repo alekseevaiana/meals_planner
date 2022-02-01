@@ -3,6 +3,7 @@ import MealsItem from "./MealsItem";
 import NavigationPannel from "./NavigationPannel";
 import Tags from "./Tags";
 import { useState } from "react";
+import { Paper } from "@material-ui/core";
 
 function isSameCaseInsesitive(s1, s2) {
   return s1.toLowerCase() === s2.toLowerCase();
@@ -33,16 +34,19 @@ export default function MealsList({
       {allIngridients && (
         <Tags ingridients={allIngridients} onChange={setSearch} />
       )}
-      <Box sx={{ m: 2 }}>
+      <Box sx={{ mt: 1 }}>
         {filteredMeals.map((item, index) => {
           return (
-            <Box key={index}>
-              <MealsItem
-                item={item}
-                handlePlanBtn={handlePlanBtn}
-                handleOpenMealBtnClick={handleOpenMealBtnClick}
-              />
-              {index !== meals.length - 1 && <Divider sx={{ mb: 2 }} />}
+            <Box sx={{ m: 2, mb: 3 }} key={index}>
+              <Paper elevation={1}>
+                <Box sx={{ p: 2 }}>
+                  <MealsItem
+                    item={item}
+                    handlePlanBtn={handlePlanBtn}
+                    handleOpenMealBtnClick={handleOpenMealBtnClick}
+                  />
+                </Box>
+              </Paper>
             </Box>
           );
         })}

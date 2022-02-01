@@ -17,7 +17,10 @@ export default function MealsItem({
   };
   return (
     <>
-      <Box onClick={() => handleOpenMealBtnClick(item.id)}>
+      <Box
+        onClick={() => handleOpenMealBtnClick(item.id)}
+        sx={{ cursor: "pointer" }}
+      >
         <Typography
           variant="h6"
           component="h3"
@@ -26,7 +29,6 @@ export default function MealsItem({
           {item.name}
         </Typography>
         <Box sx={{ mb: 1 }}>
-          {/* <IngridientsList ingridients={item.ingridients} /> */}
           <IngridientsPreview ingridients={item.ingridients} />
         </Box>
       </Box>
