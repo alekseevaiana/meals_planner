@@ -1,7 +1,8 @@
-import { Typography, Button } from "@mui/material";
+import { Typography, Button, Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import IngridientsList from "./IngridientsList";
 import { Link } from "react-router-dom";
+import IngridientsPreview from "./IngridientsPreview";
 
 export default function MealPage({ mealsData, onDeleteClick }) {
   const params = useParams();
@@ -19,20 +20,27 @@ export default function MealPage({ mealsData, onDeleteClick }) {
   // };
 
   return (
-    <>
-      <Typography variant="h6" component="h2">
+    <Box sx={{ m: 2 }}>
+      <Typography
+        variant="h6"
+        component="h2"
+        color="primary.dark"
+        sx={{ mb: 1 }}
+      >
         {currentMeal.name}
       </Typography>
-      <IngridientsList ingridients={currentMeal.ingridients} />
-
+      <Box sx={{ mb: 2 }}>
+        <Typography variant="h6" sx={{ fontSize: "18px" }}>
+          Ingridients
+        </Typography>
+        <IngridientsPreview ingridients={currentMeal.ingridients} />
+      </Box>
       <Button
         variant="outlined"
-        color="secondary"
-        sx={{ mr: 2 }}
+        sx={{ mr: 2, color: "white", backgroundColor: "success" }}
         component={Link}
         to={`/meals/${params.id}/edit`}
         variant="contained"
-        color="secondary"
       >
         Edit
       </Button>
@@ -43,6 +51,6 @@ export default function MealPage({ mealsData, onDeleteClick }) {
       >
         Delete
       </Button>
-    </>
+    </Box>
   );
 }
