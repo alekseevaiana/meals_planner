@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import IngridientsList from "./IngridientsList";
+import IngridientsPreview from "./IngridientsPreview";
 
 export default function MealsItem({
   item,
@@ -25,7 +26,8 @@ export default function MealsItem({
           {item.name}
         </Typography>
         <Box sx={{ mb: 1 }}>
-          <IngridientsList ingridients={item.ingridients} />
+          {/* <IngridientsList ingridients={item.ingridients} /> */}
+          <IngridientsPreview ingridients={item.ingridients} />
         </Box>
       </Box>
       <Box sx={{ mb: 2 }}>
