@@ -17,7 +17,11 @@ export default function MealsItem({
   return (
     <>
       <Box onClick={() => handleOpenMealBtnClick(item.id)}>
-        <Typography variant="h6" component="h3" sx={{ mb: 1 }}>
+        <Typography
+          variant="h6"
+          component="h3"
+          sx={{ mb: 1, "text-transform": "capitalize" }}
+        >
           {item.name}
         </Typography>
         <Box sx={{ mb: 1 }}>

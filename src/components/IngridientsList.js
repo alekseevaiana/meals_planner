@@ -7,7 +7,7 @@ export default function IngridientsList({ ingridients, handleDelete, type }) {
       {ingridients &&
         ingridients.map((ingridient, index) => {
           return (
-            <ListItem key={index}>
+            <ListItem key={index} sx={{ "text-transform": "capitalize" }}>
               {ingridient}
               {type === "form" && (
                 <ClearIcon

@@ -10,6 +10,7 @@ import { OutlinedInput, InputLabel, FormControl } from "@mui/material";
 
 export default function AddIngridient({ ingridients, onChange, handleDelete }) {
   const [name, setName] = useState("");
+
   const handleAdd = () => {
     const updated = [...ingridients];
     if (!updated.includes(name)) {
