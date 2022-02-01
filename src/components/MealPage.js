@@ -1,6 +1,5 @@
 import { Typography, Button, Box } from "@mui/material";
 import { useParams } from "react-router-dom";
-import IngridientsList from "./IngridientsList";
 import { Link } from "react-router-dom";
 import IngridientsPreview from "./IngridientsPreview";
 
@@ -11,13 +10,6 @@ export default function MealPage({ mealsData, onDeleteClick }) {
   // do it only if paramId is a number
   const currentMeal = mealsData.find((meal) => meal.id === paramId);
   //use useMemo for preventing doing the same if component rerenders
-  // const currentMeal = () => {
-  //   const paramId = Number.parseInt(params.id, 10);
-  //   if (paramId) {
-  //     return mealsData.find((meal) => meal.id === paramId);
-  //   }
-  //   return "Error";
-  // };
 
   return (
     <Box sx={{ m: 2 }}>

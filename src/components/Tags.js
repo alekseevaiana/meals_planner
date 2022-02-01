@@ -31,7 +31,6 @@ export default function Tags({ ingridients, onChange }) {
             {...params}
             variant="outlined"
             label="Search by ingridients"
-            // placeholder="Search by ingridients"
           />
         )}
       />
