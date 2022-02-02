@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button, TextField, Box, BottomNavigation } from "@mui/material";
 import AddIngridient from "./AddIngridient";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
 
 // value is meal {name, ingridients, id}
 export default function MealForm({ value, onChange }) {
@@ -37,7 +39,7 @@ export default function MealForm({ value, onChange }) {
         value={name}
         label="Title"
         variant="outlined"
-        sx={{ mb: 2 }}
+        sx={{ mb: 2, width: "100%" }}
         onChange={(event) => setName(event.target.value)}
       />
       <AddIngridient
@@ -45,10 +47,13 @@ export default function MealForm({ value, onChange }) {
         onChange={setIngridients}
         handleDelete={handleDelete}
       />
-      <Box>
-        <Button variant="contained" color="success" type="submit">
+      <Box sx={{ textAlign: "center" }}>
+        {/* <Button variant="contained" color="success" type="submit">
           Add
-        </Button>
+        </Button> */}
+        <Fab aria-label="add" color="primary" type="submit">
+          <AddIcon />
+        </Fab>
       </Box>
     </Box>
   );

@@ -8,9 +8,7 @@ import Stack from "@mui/material/Stack";
 
 export default function Tags({ ingridients, onChange }) {
   return (
-    <Stack
-    // spacing={3} sx={{ width: 500 }}
-    >
+    <Stack sx={{ p: 2 }}>
       <Autocomplete
         multiple
         id="tags-filled"
@@ -31,9 +29,8 @@ export default function Tags({ ingridients, onChange }) {
         renderInput={(params) => (
           <TextField
             {...params}
-            variant="filled"
+            variant="outlined"
             label="Search by ingridients"
-            placeholder="Search by ingridients"
           />
         )}
       />

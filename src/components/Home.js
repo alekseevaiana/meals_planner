@@ -36,7 +36,7 @@ export default function Home({
 
   return (
     <Box>
-      <Box className={classes.headerLinks} sx={{ mb: 3 }}>
+      <Box className={classes.headerLinks} sx={{ mb: 1 }}>
         <NavLink to="/">
           <Box className={classes.linkText} activeClassName="active">
             Meals

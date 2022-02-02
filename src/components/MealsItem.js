@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import IngridientsList from "./IngridientsList";
+import IngridientsPreview from "./IngridientsPreview";
 
 export default function MealsItem({
   item,
@@ -16,12 +17,19 @@ export default function MealsItem({
   };
   return (
     <>
-      <Box onClick={() => handleOpenMealBtnClick(item.id)}>
-        <Typography variant="h6" component="h3" sx={{ mb: 1 }}>
+      <Box
+        onClick={() => handleOpenMealBtnClick(item.id)}
+        sx={{ cursor: "pointer" }}
+      >
+        <Typography
+          variant="h6"
+          component="h3"
+          sx={{ mb: 1, textTransform: "capitalize" }}
+        >
           {item.name}
         </Typography>
         <Box sx={{ mb: 1 }}>
-          <IngridientsList ingridients={item.ingridients} />
+          <IngridientsPreview ingridients={item.ingridients} />
         </Box>
       </Box>
       <Box sx={{ mb: 2 }}>

@@ -10,6 +10,7 @@ import { OutlinedInput, InputLabel, FormControl } from "@mui/material";
 
 export default function AddIngridient({ ingridients, onChange, handleDelete }) {
   const [name, setName] = useState("");
+
   const handleAdd = () => {
     const updated = [...ingridients];
     if (!updated.includes(name)) {
@@ -29,7 +30,7 @@ export default function AddIngridient({ ingridients, onChange, handleDelete }) {
   return (
     <Box>
       <Box sx={{ display: "flex", alignItems: "center" }}>
-        <FormControl variant="outlined">
+        <FormControl variant="outlined" sx={{ width: "100%" }}>
           <InputLabel htmlFor="outlined-adornment-ingridient">
             Add ingridient
           </InputLabel>
