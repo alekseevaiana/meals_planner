@@ -1,4 +1,4 @@
-import { render, fireEvent, waitFor, screen } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import MealForm from "../components/MealForm";
@@ -14,9 +14,9 @@ describe("MealForm", () => {
 
   test("return new name on submit", async () => {
     const onChange = jest.fn();
-    const mealName = "potato";
-    const newName = "lemon";
-    const value = { name: mealName, id: "1", ingridients: [] };
+    const mealName = "Meat with potato";
+    const newName = "Meat with Rice";
+    const value = { name: mealName, id: "1", ingridients: ["rice", "meat"] };
     const { getByLabelText, container } = render(
       <MealForm value={value} onChange={onChange} />
     );
@@ -32,7 +32,7 @@ describe("MealForm", () => {
     expect(onChange).toHaveBeenCalledWith({
       id: "1",
       name: newName,
-      ingridients: [],
+      ingridients: ["rice", "meat"],
     });
   });
 });

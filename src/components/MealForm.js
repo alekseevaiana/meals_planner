@@ -48,9 +48,6 @@ export default function MealForm({ value, onChange }) {
         handleDelete={handleDelete}
       />
       <Box sx={{ textAlign: "center" }}>
-        {/* <Button variant="contained" color="success" type="submit">
-          Add
-        </Button> */}
         <Fab aria-label="add" color="primary" type="submit">
           <AddIcon />
         </Fab>
