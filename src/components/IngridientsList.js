@@ -11,12 +11,13 @@ export default function IngridientsList({ ingridients, handleDelete, type }) {
               key={index}
               sx={{
                 textTransform: "capitalize",
-                border: 1,
-                borderColor: "grey.400",
+                // border: 1,
+                // borderColor: "grey.400",
                 borderRadius: 1,
+                backgroundColor: "rgba(203, 240, 225, 0.3);",
                 mb: 2,
-                pb: "13px",
-                pt: "13px",
+                pb: "8px",
+                pt: "8px",
               }}
             >
               {ingridient}
