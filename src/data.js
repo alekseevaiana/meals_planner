@@ -1,24 +1,15 @@
-const buy_ingridients = ["meat", "tomato paste", "parmezan", "milk"];
-const pantry_ingridients = ["spaghetti", "rice", "shishito pepper"];
+import { uniqueIngridients } from "./helper";
 
-// meal.ingridients.forEach((mealIngridient) => {
-//   mealIngridient = mealIngridient.toLowerCase();
-//   if (!allIngridients.includes(mealIngridient)) {
-//     setAllIngridients((prev) => [...prev, mealIngridient]);
-//   }
-// });
-
-// const getAllIngridients = (meals) => {
-//   let allIngridients = [];
-//   meals.forEach(meal => {
-//     meal.ingridients.forEach(ingridient => {
-//       allIngridients.forEach(item => {
-//         if (ingridient )
-//       })
-//     })
-//   })
-
-// };
+const ingridientsList = [
+  {
+    id: 1,
+    name: "rice",
+    category: "Pasta/Grains",
+    quantity: 1,
+    dimension: "of them",
+    notes: "",
+  },
+];
 
 export const meals = [
   {
@@ -194,9 +185,4 @@ export const meals = [
   },
 ];
 
-export const allIngridientsData = [];
-
-// 1. ["spaghetti", "shishito pepper"] 3 pentry
-// 2. [ "rice", "meat", "souce", "onion", "carrot", "shishito peppers"] 2 pentry, 1 buy, 3 non
-// 3. ["spaghetti", "meat", "parmezan", "tomato paste"] 1 pentry, and 3 buy
-// 4. ["rice", "meat", "souce", "onion", "carrot"] 1 pentry, 1 buy, 3 non
+export const allIngridientsData = uniqueIngridients(meals);

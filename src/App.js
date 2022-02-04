@@ -54,10 +54,8 @@ function App() {
         const data = [];
         for (const meal of prevMealsData) {
           if (meal.id === updatedMeal.id) {
-            // data = [updatedMeal, ...data];
             data.push(updatedMeal);
           } else {
-            // data = [meal, ...data];
             data.push(meal);
           }
         }
