@@ -117,14 +117,22 @@ function App() {
           exact
           path="/new_meal"
           element={
-            <CreateMeal handleMealChange={handleMealChange} meals={mealsData} />
+            <CreateMeal
+              handleMealChange={handleMealChange}
+              meals={mealsData}
+              allIngridients={allIngridients}
+            />
           }
         />
         <Route
           exact
           path="/meals/:id/edit"
           element={
-            <EditMeal meals={mealsData} handleMealChange={handleMealChange} />
+            <EditMeal
+              meals={mealsData}
+              handleMealChange={handleMealChange}
+              allIngridients={allIngridients}
+            />
           }
         />
       </Routes>

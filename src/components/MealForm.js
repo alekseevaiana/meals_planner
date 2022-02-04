@@ -5,7 +5,7 @@ import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 
 // value is meal {name, ingridients, id}
-export default function MealForm({ value, onChange }) {
+export default function MealForm({ value, onChange, allIngridients }) {
   const [name, setName] = useState(value ? value.name : "");
   const [ingridients, setIngridients] = useState(
     value ? value.ingridients : []
@@ -46,6 +46,7 @@ export default function MealForm({ value, onChange }) {
         ingridients={ingridients}
         onChange={setIngridients}
         handleDelete={handleDelete}
+        allIngridients={allIngridients}
       />
       <Box sx={{ textAlign: "center" }}>
         <Fab aria-label="add" color="primary" type="submit">
