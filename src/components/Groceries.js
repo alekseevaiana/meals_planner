@@ -9,6 +9,8 @@ export default function Groceries() {
       {/* 
       - Render checklist
       - Add new ingridient with Autocomplit with parametrs: name, quaontity, category, where to buy
+      - Add new ingridient input
+      - when add -> open popup with additional inputs
       */}
     </Box>
   );
