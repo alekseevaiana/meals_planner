@@ -2,20 +2,25 @@ import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import MealForm from "../components/MealForm";
-import allIngridientsData from "../data";
 
 describe("MealForm", () => {
   test("render name in input", async () => {
+    const allIngridients = ["ground beef", "pasta", "meat"];
+
     const mealName = "potato";
     const value = { name: mealName, ingridients: [] };
+    console.log("MEAL FORM ALLINGRIDIENTS =====>>", allIngridients);
+
     const { getByLabelText } = render(
-      <MealForm value={value} allIngridients={allIngridientsData} />
+      <MealForm value={value} allIngridients={allIngridients} />
     );
     const input = getByLabelText("Title");
     expect(input.value).toEqual(mealName);
   });
 
   test("return new name on submit", async () => {
+    const allIngridients = ["ground beef", "pasta", "meat"];
+
     const onChange = jest.fn();
     const mealName = "Meat with potato";
     const newName = "Meat with Rice";
@@ -24,7 +29,7 @@ describe("MealForm", () => {
       <MealForm
         value={value}
         onChange={onChange}
-        allIngridients={allIngridientsData}
+        allIngridients={allIngridients}
       />
     );
     const input = getByLabelText("Title");

@@ -1,10 +1,10 @@
-import { render, fireEvent, waitFor, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import CreateMeal from "../components/CreateMeal";
-import allIngridientsData from "../data";
 
 describe("CreateMeal", () => {
   test("renders create meal component", async () => {
-    render(<CreateMeal allIngridients={allIngridientsData} />);
+    const allIngridients = ["ground beef", "pasta", "meat"];
+    render(<CreateMeal allIngridients={allIngridients} />);
   });
 });
