@@ -22,6 +22,9 @@ export default function NavigationPannel() {
           boxShadow: 3,
           left: "50%",
           transform: "translate(-50%, 0)",
+          height: "50px",
+          pb: 2,
+          pt: 2,
         }}
       >
         <BottomNavigationAction

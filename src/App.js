@@ -101,6 +101,7 @@ function App() {
         ml: "auto",
         mr: "auto",
         boxShadow: 3,
+        height: "100%",
       }}
     >
       <Routes>
