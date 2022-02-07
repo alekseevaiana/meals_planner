@@ -1,9 +1,9 @@
 # Meals Planner (prototype)
 
 The App helps to plan meals for several days.
-You can already create new meals, search them by ingredients, and put some meals into the plan!
-The App doesn't have a backend yet, but now the data is stored on the local storage.
-It is developing App in the early stage and it is prototyping for mobile screens for now.
+You can already create new meals, search them by ingredients, and put some meals into the plan!  
+The App doesn't have a backend yet. The data is stored on the local storage.  
+It is developing App in the early stage and it is prototyping for mobile screens for now.  
 In the future, I plan to develop grocery list and pantry list pages to better understand what product do you need to buy for a week.
 
 ## Demo

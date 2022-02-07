@@ -92,7 +92,17 @@ function App() {
     navigate("/");
   };
   return (
-    <Box className="App" sx={{ pb: 7, pt: 3 }}>
+    <Box
+      className="App"
+      sx={{
+        pb: 7,
+        pt: 3,
+        maxWidth: "400px",
+        ml: "auto",
+        mr: "auto",
+        boxShadow: 3,
+      }}
+    >
       <Routes>
         <Route
           exact
