@@ -4,16 +4,6 @@ import AddIngridient from "../components/AddIngridient";
 import userEvent from "@testing-library/user-event";
 
 describe("AddIngridients", () => {
-  test("Input for ingridient works", async () => {
-    const allIngridients = ["ground beef", "pasta", "meat"];
-    const { getByRole } = render(
-      <AddIngridient allIngridients={allIngridients} />
-    );
-    const input = getByRole("textbox");
-    userEvent.type(input, "rice");
-    expect(input).toHaveValue("rice");
-  });
-
   test("Ingridient should be added", async () => {
     const onChange = jest.fn();
     const allIngridients = ["ground beef", "pasta", "meat"];

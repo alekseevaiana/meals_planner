@@ -9,7 +9,6 @@ describe("MealForm", () => {
 
     const mealName = "potato";
     const value = { name: mealName, ingridients: [] };
-    console.log("MEAL FORM ALLINGRIDIENTS =====>>", allIngridients);
 
     const { getByLabelText } = render(
       <MealForm value={value} allIngridients={allIngridients} />

@@ -23,7 +23,7 @@ describe("IngridientsList", () => {
 });
 
 describe("IngridientsList", () => {
-  test("Delete ingridient", async () => {
+  test("Should call handleDelete when user click ClearIcon", async () => {
     const handleDelete = jest.fn();
     const list = ["cheese", "lemon"];
     const { queryByText } = render(
