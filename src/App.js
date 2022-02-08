@@ -66,7 +66,7 @@ function App() {
         ...updatedMeal,
         id: lastId + 1,
       };
-      setMealsData((prevMealsData) => [...prevMealsData, updatedMeal]);
+      setMealsData((prevMealsData) => [updatedMeal, ...prevMealsData]);
     }
     storeAddedIngridients(updatedMeal);
     navigate("/");
@@ -92,7 +92,18 @@ function App() {
     navigate("/");
   };
   return (
-    <Box className="App" sx={{ pb: 7, pt: 3 }}>
+    <Box
+      className="App"
+      sx={{
+        pb: 7,
+        pt: 3,
+        maxWidth: "400px",
+        ml: "auto",
+        mr: "auto",
+        boxShadow: 3,
+        height: "100%",
+      }}
+    >
       <Routes>
         <Route
           exact
@@ -117,14 +128,22 @@ function App() {
           exact
           path="/new_meal"
           element={
-            <CreateMeal handleMealChange={handleMealChange} meals={mealsData} />
+            <CreateMeal
+              handleMealChange={handleMealChange}
+              meals={mealsData}
+              allIngridients={allIngridients}
+            />
           }
         />
         <Route
           exact
           path="/meals/:id/edit"
           element={
-            <EditMeal meals={mealsData} handleMealChange={handleMealChange} />
+            <EditMeal
+              meals={mealsData}
+              handleMealChange={handleMealChange}
+              allIngridients={allIngridients}
+            />
           }
         />
       </Routes>
