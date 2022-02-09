@@ -4,8 +4,12 @@ import HomeIcon from "@mui/icons-material/Home";
 import AddSharpIcon from "@mui/icons-material/AddSharp";
 import { Link } from "react-router-dom";
 import { Paper } from "@material-ui/core";
+import React from "react";
 
 export default function NavigationPannel() {
+  function refreshPage() {
+    window.location.reload(false);
+  }
   return (
     <Paper
       sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
@@ -33,6 +37,9 @@ export default function NavigationPannel() {
           component={Link}
           to={"/new_meal"}
         />
+        <div>
+          <button onClick={refreshPage}>Click to reload!</button>
+        </div>
       </BottomNavigation>
     </Paper>
   );
