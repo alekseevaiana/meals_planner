@@ -97,11 +97,11 @@ function App() {
       sx={{
         pb: 7,
         pt: 3,
+        width: "100%",
         maxWidth: "400px",
         ml: "auto",
         mr: "auto",
         boxShadow: 3,
-        height: "100%",
       }}
     >
       <Routes>

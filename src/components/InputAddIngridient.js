@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TextField, Box, Autocomplete } from "@mui/material";
+import { TextField, Box, Autocomplete, IconButton } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
 export default function InputAddIngridient({
@@ -51,13 +51,9 @@ export default function InputAddIngridient({
           )}
         />
         <Box sx={{ p: 1 }}>
-          <AddIcon
-            aria-label="add ingridient"
-            // could be added to ingridients in meal or another list
-            onClick={handleAdd}
-            edge="end"
-            sx={{ ml: "auto" }}
-          />
+          <IconButton onClick={handleAdd}>
+            <AddIcon aria-label="add ingridient" sx={{ ml: "auto" }} />
+          </IconButton>
         </Box>
       </Box>
     </>
