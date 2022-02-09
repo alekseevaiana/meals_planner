@@ -6,6 +6,7 @@ import { meals, allIngridientsData } from "./data.js";
 import { useState, useEffect } from "react";
 import EditMeal from "./components/EditMeal";
 import { Box } from "@mui/system";
+import Groceries from "./components/Groceries";
 
 function getFromStorage(name, defaultValue) {
   const str = localStorage.getItem(name);
@@ -122,6 +123,13 @@ function App() {
           path="/meals/:id"
           element={
             <MealPage mealsData={mealsData} onDeleteClick={onDeleteClick} />
+          }
+        />
+        <Route
+          exact
+          path="/groceries"
+          element={
+            <Groceries mealsData={mealsData} onDeleteClick={onDeleteClick} />
           }
         />
         <Route

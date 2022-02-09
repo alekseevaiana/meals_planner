@@ -1,45 +1,16 @@
 import { uniqueIngridients } from "./helper";
 
-const ingridientsList = [
-  {
-    id: 1,
-    name: "rice",
-    category: "Pasta/Grains",
-    quantity: 1,
-    dimension: "of them",
-    notes: "",
-  },
-];
+const ingridient = {
+  id: 1,
+  name: "rice",
+  category: "Pasta/Grains",
+  quantity: 1,
+  dimension: "of them",
+  notes: "",
+  whereToBuy: "",
+};
 
 export const meals = [
-  {
-    id: 1,
-    name: "Spaghetti carbonara",
-    ingridients: ["spaghetti", "meat", "parmezan", "tomato paste"],
-    inPlan: true,
-  },
-  {
-    id: 2,
-    name: "Rice with meat",
-    ingridients: ["rice", "meat", "souce", "onion", "carrot"],
-  },
-  {
-    id: 3,
-    name: "Rice with shishito peppers and meat",
-    ingridients: [
-      "rice",
-      "meat",
-      "souce",
-      "onion",
-      "carrot",
-      "shishito peppers",
-    ],
-  },
-  {
-    id: 4,
-    name: "Spaghetti with shishito peppers",
-    ingridients: ["spaghetti", "shishito pepper"],
-  },
   {
     id: 5,
     name: "Spanish-Style Beef & Vegetables",
