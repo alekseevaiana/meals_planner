@@ -93,6 +93,7 @@ function App() {
       }}
     >
       {console.log("newMeals", newMeals)}
+      {console.log("oldMeals: ", mealsData)}
       <Routes>
         <Route
           exact
