@@ -1,7 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import CheckboxList from "./CheckboxList";
+import InputAddIngridient from "./InputAddIngridient";
 
-export default function Groceries({}) {
+export default function Groceries({ allIngridients }) {
   const ingridients = [
     {
       id: 1,
@@ -32,17 +33,12 @@ export default function Groceries({}) {
     },
   ];
   return (
-    <Box>
+    <Box sx={{ m: 2 }}>
       <Typography variant="h6" color="primary.dark">
         Groceries
       </Typography>
+      <InputAddIngridient allIngridients={allIngridients} />
       <CheckboxList ingridients={ingridients} />
-      {/* 
-      - Render checklist
-      - Add new ingridient with Autocomplit with parametrs: name, quaontity, category, where to buy
-      - Add new ingridient input
-      - when add -> open popup with additional inputs
-      */}
     </Box>
   );
 }

@@ -20,3 +20,17 @@ export function uniqueIngridients(meals) {
 
   return uniqueIngridients;
 }
+
+export function getFromStorage(name, defaultValue) {
+  const str = localStorage.getItem(name);
+  if (!str) {
+    return defaultValue;
+  }
+
+  try {
+    return JSON.parse(str);
+  } catch (e) {
+    console.warn("Cant parse json: " + name);
+    return defaultValue;
+  }
+}

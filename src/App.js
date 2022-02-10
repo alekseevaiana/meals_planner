@@ -7,20 +7,7 @@ import { useState, useEffect } from "react";
 import EditMeal from "./components/EditMeal";
 import { Box } from "@mui/system";
 import Groceries from "./components/Groceries";
-
-function getFromStorage(name, defaultValue) {
-  const str = localStorage.getItem(name);
-  if (!str) {
-    return defaultValue;
-  }
-
-  try {
-    return JSON.parse(str);
-  } catch (e) {
-    console.warn("Cant parse json: " + name);
-    return defaultValue;
-  }
-}
+import { getFromStorage } from "./helper";
 
 function App() {
   const [mealsData, setMealsData] = useState(() =>
@@ -129,7 +116,11 @@ function App() {
           exact
           path="/groceries"
           element={
-            <Groceries mealsData={mealsData} onDeleteClick={onDeleteClick} />
+            <Groceries
+              mealsData={mealsData}
+              onDeleteClick={onDeleteClick}
+              allIngridients={allIngridients}
+            />
           }
         />
         <Route
