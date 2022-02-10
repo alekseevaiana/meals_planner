@@ -2,7 +2,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./components/Home";
 import CreateMeal from "./components/CreateMeal";
 import MealPage from "./components/MealPage";
-import { meals, allIngridientsData } from "./data.js";
+import { meals, allIngridientsData, newMeals } from "./data.js";
 import { useState, useEffect } from "react";
 import EditMeal from "./components/EditMeal";
 import { Box } from "@mui/system";
@@ -92,6 +92,7 @@ function App() {
         boxShadow: 3,
       }}
     >
+      {console.log("newMeals", newMeals)}
       <Routes>
         <Route
           exact

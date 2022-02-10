@@ -156,4 +156,40 @@ export const meals = [
   },
 ];
 
+function changeIngridients(ingridients) {
+  let prevId = 0;
+  let newIngridients = [];
+  ingridients.forEach((ingridient) => {
+    const obj = {
+      name: ingridient,
+      id: prevId++,
+      category: "",
+      quantity: 1,
+      dimension: "of them",
+      notes: "",
+      whereToBuy: "",
+    };
+    newIngridients.push(obj);
+  });
+
+  return newIngridients;
+}
+
+function changeAllMealsIngridients(meals) {
+  let newMeals = [];
+  meals.forEach((meal) => {
+    let newIngridients = changeIngridients(meal.ingridients);
+    console.log("newIngridients", newIngridients);
+    const newMeal = {
+      ingridients: newIngridients,
+      name: meal.name,
+      id: meal.id,
+    };
+    newMeals.push(newMeal);
+  });
+  return newMeals;
+}
+
+export const newMeals = changeAllMealsIngridients(meals);
+
 export const allIngridientsData = uniqueIngridients(meals);
