@@ -12,8 +12,8 @@ import { v4 as uuidv4 } from "uuid";
 
 export function updateMeals(mealsData, updatedMeal, updater) {
   // for some reason last id is not updated
-  const lastId = mealsData[mealsData.length - 1].id;
-
+  // const lastId = mealsData[mealsData.length - 1].id;
+  console.log("current meal", updatedMeal);
   if (updatedMeal.id) {
     updater((prevMealsData) => {
       const data = [];
@@ -31,7 +31,8 @@ export function updateMeals(mealsData, updatedMeal, updater) {
 
     updatedMeal = {
       ...updatedMeal,
-      id: lastId + 1,
+      // id: lastId + 1,
+      id: uuidv4(),
     };
     console.log("new meal", updatedMeal);
     updater((prevMealsData) => [updatedMeal, ...prevMealsData]);
@@ -46,6 +47,7 @@ function App() {
   const [allIngridients, setAllIngridients] = useState(() =>
     getFromStorage("allIngridients", allIngridientsData)
   );
+  const [uniqueId, setUniqueId] = useState(0);
 
   const navigate = useNavigate();
 
@@ -81,6 +83,7 @@ function App() {
   };
 
   const handleOpenMealBtnClick = (id) => {
+    console.log("id", id);
     navigate(`/meals/${id}`);
   };
 

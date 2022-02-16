@@ -1,15 +1,14 @@
+import { FaxRounded } from "@mui/icons-material";
 import { Typography, Button, Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import IngridientsPreview from "./IngridientsPreview";
+import { getParamId } from "../helper";
 
 export default function MealPage({ mealsData, onDeleteClick }) {
   const params = useParams();
-  // check here if paramId is not a number
-  const paramId = Number.parseInt(params.id, 10);
-  // do it only if paramId is a number
-  const currentMeal = mealsData.find((meal) => meal.id === paramId);
-  //use useMemo for preventing doing the same if component rerenders
+
+  const currentMeal = mealsData.find((meal) => meal.id === getParamId(params));
 
   return (
     <Box sx={{ m: 2 }}>

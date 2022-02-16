@@ -67,3 +67,8 @@ export function getFromStorage(name, defaultValue) {
     return defaultValue;
   }
 }
+
+export const getParamId = (params) => {
+  const currentParam = params.id;
+  return currentParam;
+};

@@ -2,7 +2,7 @@ import { uniqueIngridients, changeAllMealsIngridients } from "./helper";
 
 export const meals = [
   {
-    id: 5,
+    id: "5",
     name: "Spanish-Style Beef & Vegetables",
     ingridients: [
       "Ground Beef",
@@ -16,7 +16,7 @@ export const meals = [
     ],
   },
   {
-    id: 6,
+    id: "6",
     name: "Pork Chorizo, Potato & Fig Bake",
     ingridients: [
       "Pork Chorizo",
@@ -28,7 +28,7 @@ export const meals = [
     ],
   },
   {
-    id: 7,
+    id: "7",
     name: "Romesco Beef & Poblano Pepper",
     ingridients: [
       "Ground Beef",
@@ -41,7 +41,7 @@ export const meals = [
     inPlan: true,
   },
   {
-    id: 8,
+    id: "8",
     name: "Pan-Seared Cod",
     ingridients: [
       "Cod Fillets",
@@ -56,7 +56,7 @@ export const meals = [
     ],
   },
   {
-    id: 9,
+    id: "9",
     name: "Smoky Guajillo Beef & Rice Bowls",
     ingridients: [
       "Ground Beef",
@@ -70,7 +70,7 @@ export const meals = [
     ],
   },
   {
-    id: 10,
+    id: "10",
     name: "Spanish-Spiced Salmon & Veggie Quinoa",
     ingridients: [
       "Skin-On Salmon Fillets",
@@ -85,7 +85,7 @@ export const meals = [
     ],
   },
   {
-    id: 11,
+    id: "11",
     name: "Calabrian Beef & Gnocchi",
     ingridients: [
       "Ground Beef",
@@ -99,7 +99,7 @@ export const meals = [
     ],
   },
   {
-    id: 12,
+    id: "12",
     name: "Shawarma-Spiced Cod & Arugula Salad",
     ingridients: [
       "Cod Fillets",
@@ -116,7 +116,7 @@ export const meals = [
     ],
   },
   {
-    id: 13,
+    id: "13",
     name: "Spicy Pork Sausage Pasta",
     ingridients: [
       "Hot Italian Pork Sausage",
@@ -129,7 +129,7 @@ export const meals = [
     ],
   },
   {
-    id: 14,
+    id: "14",
     name: "Italian Beef & Pesto Rice",
     ingridients: [
       "Ground Beef",
