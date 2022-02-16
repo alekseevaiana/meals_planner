@@ -37,9 +37,8 @@ function isSameCaseInsesitive(s1, s2) {
   return s1.toLowerCase() === s2.toLowerCase();
 }
 
-// if array of ingridients has meal.ingridient => go to next meal
 function hasString(array, str) {
-  return array.some((v) => isSameCaseInsesitive(v, str));
+  return array.some((item) => isSameCaseInsesitive(item, str));
 }
 
 export function uniqueIngridients(meals) {

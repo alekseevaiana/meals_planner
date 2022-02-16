@@ -2,12 +2,41 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./components/Home";
 import CreateMeal from "./components/CreateMeal";
 import MealPage from "./components/MealPage";
-import { meals, allIngridientsData, newMeals } from "./data.js";
+import { meals, allIngridientsData } from "./data.js";
 import { useState, useEffect } from "react";
 import EditMeal from "./components/EditMeal";
 import { Box } from "@mui/system";
 import Groceries from "./components/Groceries";
 import { getFromStorage } from "./helper";
+import { v4 as uuidv4 } from "uuid";
+
+export function updateMeals(mealsData, updatedMeal, updater) {
+  // for some reason last id is not updated
+  const lastId = mealsData[mealsData.length - 1].id;
+
+  if (updatedMeal.id) {
+    updater((prevMealsData) => {
+      const data = [];
+      for (const meal of prevMealsData) {
+        if (meal.id === updatedMeal.id) {
+          data.push(updatedMeal);
+        } else {
+          data.push(meal);
+        }
+      }
+      return data;
+    });
+  } else {
+    console.log("new meal");
+
+    updatedMeal = {
+      ...updatedMeal,
+      id: lastId + 1,
+    };
+    console.log("new meal", updatedMeal);
+    updater((prevMealsData) => [updatedMeal, ...prevMealsData]);
+  }
+}
 
 function App() {
   const [mealsData, setMealsData] = useState(() =>
@@ -28,6 +57,7 @@ function App() {
   const storeAddedIngridients = (meal) => {
     meal.ingridients.forEach((mealIngridient) => {
       mealIngridient = mealIngridient.toLowerCase();
+
       if (!allIngridients.includes(mealIngridient)) {
         setAllIngridients((prev) => [...prev, mealIngridient]);
       }
@@ -35,27 +65,7 @@ function App() {
   };
 
   const handleMealChange = (updatedMeal) => {
-    const lastId = mealsData[mealsData.length - 1].id;
-    // update old meal
-    if (updatedMeal.id) {
-      setMealsData((prevMealsData) => {
-        const data = [];
-        for (const meal of prevMealsData) {
-          if (meal.id === updatedMeal.id) {
-            data.push(updatedMeal);
-          } else {
-            data.push(meal);
-          }
-        }
-        return data;
-      });
-    } else {
-      updatedMeal = {
-        ...updatedMeal,
-        id: lastId + 1,
-      };
-      setMealsData((prevMealsData) => [updatedMeal, ...prevMealsData]);
-    }
+    updateMeals(mealsData, updatedMeal, setMealsData);
     storeAddedIngridients(updatedMeal);
     navigate("/");
   };
@@ -92,8 +102,6 @@ function App() {
         boxShadow: 3,
       }}
     >
-      {console.log("newMeals", newMeals)}
-      {console.log("oldMeals: ", mealsData)}
       <Routes>
         <Route
           exact
