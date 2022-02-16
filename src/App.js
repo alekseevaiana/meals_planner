@@ -10,10 +10,7 @@ import Groceries from "./components/Groceries";
 import { getFromStorage } from "./helper";
 import { v4 as uuidv4 } from "uuid";
 
-export function updateMeals(mealsData, updatedMeal, updater) {
-  // for some reason last id is not updated
-  // const lastId = mealsData[mealsData.length - 1].id;
-  console.log("current meal", updatedMeal);
+export function updateMeals(updatedMeal, updater) {
   if (updatedMeal.id) {
     updater((prevMealsData) => {
       const data = [];
@@ -27,14 +24,10 @@ export function updateMeals(mealsData, updatedMeal, updater) {
       return data;
     });
   } else {
-    console.log("new meal");
-
     updatedMeal = {
       ...updatedMeal,
-      // id: lastId + 1,
       id: uuidv4(),
     };
-    console.log("new meal", updatedMeal);
     updater((prevMealsData) => [updatedMeal, ...prevMealsData]);
   }
 }
@@ -47,7 +40,6 @@ function App() {
   const [allIngridients, setAllIngridients] = useState(() =>
     getFromStorage("allIngridients", allIngridientsData)
   );
-  const [uniqueId, setUniqueId] = useState(0);
 
   const navigate = useNavigate();
 

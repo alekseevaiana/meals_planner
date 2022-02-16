@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import App, { updateMeals } from "../App";
 import { HashRouter } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4, validate } from "uuid";
 
 test("renders App", async () => {
   render(
@@ -16,41 +16,28 @@ describe("updateMeals", () => {
   // add test when mealsData is empty
 
   test("new meal", () => {
-    const data = [{ id: 1, name: "juice" }];
+    const data = [{ id: uuidv4(), name: "juice" }];
     const updated = { name: "potato" };
     const updater = jest.fn();
 
-    updateMeals(data, updated, updater);
+    updateMeals(updated, updater);
 
     const args = updater.mock.calls[0];
     const fn = args[0];
 
+    expect(fn(data)[0].name).toEqual("potato");
+    expect(typeof fn(data)[0].id).toEqual("string");
+    expect(fn(data)[0].id).toMatch(
+      /\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/
+    );
+    expect(fn(data)[0].id.length).toEqual(36);
+    expect(validate(fn(data)[0].id)).toEqual(true);
+
     expect(fn(data)).toEqual([
-      { id: 2, name: "potato" },
-      { id: 1, name: "juice" },
+      { id: expect.anything(), name: "potato" },
+      { id: expect.any(String), name: "juice" },
     ]);
-  });
 
-  test("two meals added meal", () => {
-    let data = [{ id: 1, name: "juice" }];
-    let updated = { name: "potato" };
-    let updater = jest.fn();
-    updateMeals(data, updated, updater);
-    let args = updater.mock.calls[0];
-    let fn = args[0];
-    data = fn(data);
-
-    updated = { name: "cookie" };
-    updater = jest.fn();
-    updateMeals(data, updated, updater);
-    args = updater.mock.calls[0];
-    fn = args[0];
-    data = fn(data);
-
-    expect(data).toEqual([
-      { id: 3, name: "cookie" },
-      { id: 2, name: "potato" },
-      { id: 1, name: "juice" },
-    ]);
+    //expect(validate(id)).toEqual(true)
   });
 });
