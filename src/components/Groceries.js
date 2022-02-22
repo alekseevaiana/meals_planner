@@ -3,6 +3,27 @@ import CheckboxList from "./CheckboxList";
 import InputAddIngridient from "./InputAddIngridient";
 
 export default function Groceries({ allIngridients }) {
+  // make allIngridients array of objects
+  // const allIngridients = [
+  //   {
+  //     id: 1,
+  //     name: "rice",
+  //     category: "Pasta/Grains",
+  //     quantity: 1,
+  //     dimension: "of them",
+  //     notes: "",
+  //     whereToBuy: "",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "ground beef",
+  //     category: "Meat",
+  //     quantity: 1,
+  //     dimension: "of them",
+  //     notes: "",
+  //     whereToBuy: "Trader Joe's",
+  //   },
+  // ];
   const ingridients = [
     {
       id: 1,
