@@ -23,10 +23,10 @@ export function changeAllMealsIngridients(meals) {
   meals.forEach((meal) => {
     let newIngridients = changeIngridients(meal.ingridients);
     const newMeal = {
-      ingridients: newIngridients,
-      name: meal.name,
       id: meal.id,
-      inPlan: meal.inPlan,
+      name: meal.name,
+      ingridients: newIngridients,
+      inPlan: meal.inPlan ? meal.inPlan : false,
     };
     newMeals.push(newMeal);
   });

@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 
 export default function IngridientsPreview({ ingridients }) {
+  console.log("inside ingridients preview");
   return (
     <Box sx={{ pt: 2, display: "flex", flexWrap: "wrap" }}>
       {ingridients &&
@@ -18,7 +19,7 @@ export default function IngridientsPreview({ ingridients }) {
                 mr: 1,
               }}
             >
-              {ingridient}
+              {ingridient.name ?? "No name"}
             </Box>
           );
         })}

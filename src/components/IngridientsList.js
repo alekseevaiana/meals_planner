@@ -20,7 +20,7 @@ export default function IngridientsList({ ingridients, handleDelete, type }) {
                 pt: "8px",
               }}
             >
-              {ingridient}
+              {ingridient.name ?? "no name"}
               {type === "form" && (
                 <ClearIcon
                   sx={{ ml: "auto", cursor: "pointer" }}

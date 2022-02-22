@@ -2,7 +2,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./components/Home";
 import CreateMeal from "./components/CreateMeal";
 import MealPage from "./components/MealPage";
-import { meals, allIngridientsData } from "./data.js";
+import { meals, allIngridientsData, newMeals } from "./data.js";
 import { useState, useEffect } from "react";
 import EditMeal from "./components/EditMeal";
 import { Box } from "@mui/system";
@@ -34,7 +34,7 @@ export function updateMeals(updatedMeal, updater) {
 
 function App() {
   const [mealsData, setMealsData] = useState(() =>
-    getFromStorage("mealsData", meals)
+    getFromStorage("mealsData", newMeals)
   );
 
   const [allIngridients, setAllIngridients] = useState(() =>
@@ -48,10 +48,12 @@ function App() {
     localStorage.setItem("allIngridients", JSON.stringify(allIngridients));
   }, [mealsData, allIngridients]);
 
+  // check if ingridient excists
   const storeAddedIngridients = (meal) => {
     meal.ingridients.forEach((mealIngridient) => {
       mealIngridient = mealIngridient.toLowerCase();
 
+      // check if ingridient excists
       if (!allIngridients.includes(mealIngridient)) {
         setAllIngridients((prev) => [...prev, mealIngridient]);
       }
@@ -84,6 +86,8 @@ function App() {
     setMealsData(newMealsData);
     navigate("/");
   };
+  console.log("new meals", newMeals);
+  console.log("meals", meals);
   return (
     <Box
       className="App"
