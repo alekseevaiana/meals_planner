@@ -11,6 +11,7 @@ import { getFromStorage } from "./helper";
 import { v4 as uuidv4 } from "uuid";
 
 export function updateMeals(updatedMeal, updater) {
+  console.log("inside updater");
   if (updatedMeal.id) {
     updater((prevMealsData) => {
       const data = [];
@@ -51,7 +52,7 @@ function App() {
   // check if ingridient excists
   const storeAddedIngridients = (meal) => {
     meal.ingridients.forEach((mealIngridient) => {
-      mealIngridient = mealIngridient.toLowerCase();
+      mealIngridient = mealIngridient.name.toLowerCase();
 
       // check if ingridient excists
       if (!allIngridients.includes(mealIngridient)) {
@@ -61,7 +62,7 @@ function App() {
   };
 
   const handleMealChange = (updatedMeal) => {
-    updateMeals(mealsData, updatedMeal, setMealsData);
+    updateMeals(updatedMeal, setMealsData);
     storeAddedIngridients(updatedMeal);
     navigate("/");
   };
