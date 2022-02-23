@@ -34,11 +34,23 @@ export function changeAllMealsIngridients(meals) {
 }
 
 function isSameCaseInsesitive(s1, s2) {
-  return s1.toLowerCase() === s2.toLowerCase();
+  if (s1.name && s2.name) {
+    return s1.name?.toLowerCase() === s2.name?.toLowerCase();
+  } else {
+    return s1.toLowerCase() === s2.toLowerCase();
+  }
 }
 
-function hasString(array, str) {
+export function hasString(array, str) {
   return array.some((item) => isSameCaseInsesitive(item, str));
+}
+
+// target => meal ingridients array, searched item array
+export function hasAllSearched() {}
+
+export function hasAll(target, search) {
+  console.log("has all target: " + target[0].name + ", search: " + search);
+  return search.every((s) => hasString(target, s));
 }
 
 export function uniqueIngridients(meals) {

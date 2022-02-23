@@ -51,10 +51,12 @@ function App() {
 
   // check if ingridient excists
   const storeAddedIngridients = (meal) => {
+    console.log("inside store added ingridients");
     meal.ingridients.forEach((mealIngridient) => {
       mealIngridient = mealIngridient.name.toLowerCase();
 
       // check if ingridient excists
+
       if (!allIngridients.includes(mealIngridient)) {
         setAllIngridients((prev) => [...prev, mealIngridient]);
       }
@@ -89,6 +91,7 @@ function App() {
   };
   console.log("new meals", newMeals);
   console.log("meals", meals);
+  console.log("allIngridients in App:", allIngridients);
   return (
     <Box
       className="App"

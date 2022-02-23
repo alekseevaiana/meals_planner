@@ -4,18 +4,7 @@ import NavigationPannel from "./NavigationPannel";
 import Tags from "./Tags";
 import { useState } from "react";
 import { Paper } from "@material-ui/core";
-
-function isSameCaseInsesitive(s1, s2) {
-  return s1.toLowerCase() === s2.toLowerCase();
-}
-
-function hasString(array, str) {
-  return array.some((v) => isSameCaseInsesitive(v, str));
-}
-
-function hasAll(target, search) {
-  return search.every((s) => hasString(target, s));
-}
+import { hasAll } from "../helper";
 
 export default function MealsList({
   meals,
@@ -25,10 +14,11 @@ export default function MealsList({
 }) {
   const [search, setSearch] = useState([]);
 
+  // filter meals by searched ingridients
   const filteredMeals = meals.filter((meal) =>
     hasAll(meal.ingridients, search)
   );
-
+  console.log("allIngridients in Meals list", allIngridients);
   return (
     <Box>
       {allIngridients && (

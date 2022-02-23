@@ -148,4 +148,4 @@ export const meals = [
 
 export const newMeals = changeAllMealsIngridients(meals);
 
-export const allIngridientsData = uniqueIngridients(meals);
+export const allIngridientsData = uniqueIngridients(newMeals);
