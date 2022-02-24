@@ -5,12 +5,12 @@ export default function CheckboxList({ ingridients }) {
     <>
       <FormGroup>
         {ingridients &&
-          ingridients.map((ingridient) => {
+          ingridients.map((ingridient, index) => {
             return (
               <FormControlLabel
                 control={<Checkbox />}
-                label={ingridient.name}
-                key={ingridient.id}
+                label={ingridient}
+                key={index}
               />
             );
           })}

@@ -10,15 +10,12 @@ export default function InputAddIngridient({
   const [name, setName] = useState("");
 
   const handleAdd = () => {
-    // here is all ingridients that comes with meal
-    // in case groceries or pantry should be the same
+    console.log("handle add");
     const updated = [...savedIngridients];
-    // if there is NO such ingridient come with input name -> push it to the list
     if (!updated.includes(name)) {
       updated.push(name);
     }
     setName("");
-    // call func with new ingridients list
     onChange(updated);
   };
 
