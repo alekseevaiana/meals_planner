@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TextField, Box, Autocomplete } from "@mui/material";
+import { TextField, Box, Autocomplete, IconButton } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
 export default function InputAddIngridient({
@@ -10,15 +10,11 @@ export default function InputAddIngridient({
   const [name, setName] = useState("");
 
   const handleAdd = () => {
-    // here is all ingridients that comes with meal
-    // in case groceries or pantry should be the same
     const updated = [...savedIngridients];
-    // if there is NO such ingridient come with input name -> push it to the list
     if (!updated.includes(name)) {
       updated.push(name);
     }
     setName("");
-    // call func with new ingridients list
     onChange(updated);
   };
 
@@ -51,13 +47,9 @@ export default function InputAddIngridient({
           )}
         />
         <Box sx={{ p: 1 }}>
-          <AddIcon
-            aria-label="add ingridient"
-            // could be added to ingridients in meal or another list
-            onClick={handleAdd}
-            edge="end"
-            sx={{ ml: "auto" }}
-          />
+          <IconButton onClick={handleAdd}>
+            <AddIcon aria-label="add ingridient" sx={{ ml: "auto" }} />
+          </IconButton>
         </Box>
       </Box>
     </>

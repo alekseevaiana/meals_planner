@@ -1,14 +1,13 @@
 import { Box, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
+import { getParamId } from "../helper";
 
 import MealForm from "./MealForm";
 
 export default function EditMeal({ meals, handleMealChange, allIngridients }) {
   const params = useParams();
 
-  const paramId = Number.parseInt(params.id, 10);
-
-  const currentMeal = meals.find((meal) => meal.id === paramId);
+  const currentMeal = meals.find((meal) => meal.id === getParamId(params));
 
   return (
     <Box sx={{ m: 2 }}>

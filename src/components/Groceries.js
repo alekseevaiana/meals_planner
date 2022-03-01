@@ -1,17 +1,26 @@
 import { Box, Typography } from "@mui/material";
+import { useState } from "react";
+import CheckboxList from "./CheckboxList";
+import InputAddIngridient from "./InputAddIngridient";
 
-export default function Groceries() {
+export default function Groceries({ allIngridients }) {
+  const [groceries, setGroceries] = useState([]);
+
+  const updateIngridients = (updated) => {
+    setGroceries(updated);
+  };
   return (
-    <Box>
+    <Box sx={{ m: 2 }}>
       <Typography variant="h6" color="primary.dark">
         Groceries
       </Typography>
-      {/* 
-      - Render checklist
-      - Add new ingridient with Autocomplit with parametrs: name, quaontity, category, where to buy
-      - Add new ingridient input
-      - when add -> open popup with additional inputs
-      */}
+
+      <InputAddIngridient
+        allIngridients={allIngridients}
+        onChange={updateIngridients}
+        savedIngridients={groceries}
+      />
+      <CheckboxList ingridients={groceries} />
     </Box>
   );
 }

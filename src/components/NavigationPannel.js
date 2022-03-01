@@ -1,9 +1,10 @@
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import HomeIcon from "@mui/icons-material/Home";
 import AddSharpIcon from "@mui/icons-material/AddSharp";
 import { Link } from "react-router-dom";
 import { Paper } from "@material-ui/core";
+import React from "react";
+import LocalGroceryStoreRoundedIcon from "@mui/icons-material/LocalGroceryStoreRounded";
 
 export default function NavigationPannel() {
   return (
@@ -22,8 +23,8 @@ export default function NavigationPannel() {
           boxShadow: 3,
           left: "50%",
           transform: "translate(-50%, 0)",
-          height: "50px",
-          pb: 2,
+          height: "60px",
+          pb: 3,
           pt: 2,
         }}
       >
@@ -32,6 +33,12 @@ export default function NavigationPannel() {
           icon={<AddSharpIcon />}
           component={Link}
           to={"/new_meal"}
+        />
+        <BottomNavigationAction
+          label="groceries"
+          icon={<LocalGroceryStoreRoundedIcon />}
+          component={Link}
+          to={"/groceries"}
         />
       </BottomNavigation>
     </Paper>

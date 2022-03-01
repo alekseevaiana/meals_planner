@@ -1,6 +1,4 @@
 import { Box, Button, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
-import IngridientsList from "./IngridientsList";
 import IngridientsPreview from "./IngridientsPreview";
 
 export default function MealsItem({

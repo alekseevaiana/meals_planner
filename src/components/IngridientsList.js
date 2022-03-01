@@ -23,7 +23,7 @@ export default function IngridientsList({ ingridients, handleDelete, type }) {
               {ingridient}
               {type === "form" && (
                 <ClearIcon
-                  sx={{ ml: "auto" }}
+                  sx={{ ml: "auto", cursor: "pointer" }}
                   onClick={() => handleDelete(index)}
                   color="action"
                 />
