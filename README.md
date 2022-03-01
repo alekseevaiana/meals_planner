@@ -44,3 +44,8 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 ### Deployment
 
 ### `npm run deploy`
+
+## Style Guide
+
+In the project I use MUI Library  
+[https://mui.com/components/material-icons/?theme=Rounded](https://mui.com/components/material-icons/?theme=Rounded)
