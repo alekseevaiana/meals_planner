@@ -10,7 +10,6 @@ export default function InputAddIngridient({
   const [name, setName] = useState("");
 
   const handleAdd = () => {
-    console.log("handle add");
     const updated = [...savedIngridients];
     if (!updated.includes(name)) {
       updated.push(name);

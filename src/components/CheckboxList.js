@@ -1,4 +1,5 @@
 import { FormGroup, FormControlLabel, Checkbox } from "@mui/material/";
+import { useState } from "react";
 
 export default function CheckboxList({ ingridients }) {
   return (
@@ -8,7 +9,7 @@ export default function CheckboxList({ ingridients }) {
           ingridients.map((ingridient, index) => {
             return (
               <FormControlLabel
-                control={<Checkbox />}
+                control={<Checkbox name={ingridient} />}
                 label={ingridient}
                 key={index}
               />

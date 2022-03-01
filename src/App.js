@@ -75,7 +75,6 @@ function App() {
   };
 
   const handleOpenMealBtnClick = (id) => {
-    console.log("id", id);
     navigate(`/meals/${id}`);
   };
 
