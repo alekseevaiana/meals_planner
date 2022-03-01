@@ -16,6 +16,11 @@ export default function Groceries({ allIngridients }) {
   const updateIngridients = (updated) => {
     setGroceries(updated);
   };
+
+  const handleDelete = (ingridient) => {
+    const updatedGroceries = groceries.filter((item) => item != ingridient);
+    setGroceries(updatedGroceries);
+  };
   return (
     <Box sx={{ m: 2 }}>
       <Typography variant="h6" color="primary.dark">
@@ -27,7 +32,7 @@ export default function Groceries({ allIngridients }) {
         onChange={updateIngridients}
         savedIngridients={groceries}
       />
-      <CheckboxList ingridients={groceries} />
+      <CheckboxList ingridients={groceries} handleDelete={handleDelete} />
     </Box>
   );
 }
