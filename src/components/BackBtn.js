@@ -6,12 +6,14 @@ export default function BackBtn({ direction }) {
   const navigate = useNavigate();
 
   const handleOnClick = (direction) => {
-    console.log(direction);
     navigate("/");
   };
   return (
     <Box sx={{ ml: 2 }}>
-      <ArrowBackRoundedIcon onClick={() => handleOnClick(direction)} />
+      <ArrowBackRoundedIcon
+        onClick={() => handleOnClick(direction)}
+        sx={{ cursor: "pointer" }}
+      />
     </Box>
   );
 }
