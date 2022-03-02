@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import CheckboxList from "./CheckboxList";
 import InputAddIngridient from "./InputAddIngridient";
 import { getFromStorage } from "../helper";
+import BackBtn from "./BackBtn";
 
 export default function Groceries({ allIngridients }) {
   const [groceries, setGroceries] = useState(() =>
@@ -22,17 +23,20 @@ export default function Groceries({ allIngridients }) {
     setGroceries(updatedGroceries);
   };
   return (
-    <Box sx={{ m: 2 }}>
-      <Typography variant="h6" color="primary.dark">
-        Groceries
-      </Typography>
+    <>
+      <BackBtn direction="/" />
+      <Box sx={{ m: 2 }}>
+        <Typography variant="h6" color="primary.dark">
+          Groceries
+        </Typography>
 
-      <InputAddIngridient
-        allIngridients={allIngridients}
-        onChange={updateIngridients}
-        savedIngridients={groceries}
-      />
-      <CheckboxList ingridients={groceries} handleDelete={handleDelete} />
-    </Box>
+        <InputAddIngridient
+          allIngridients={allIngridients}
+          onChange={updateIngridients}
+          savedIngridients={groceries}
+        />
+        <CheckboxList ingridients={groceries} handleDelete={handleDelete} />
+      </Box>
+    </>
   );
 }
