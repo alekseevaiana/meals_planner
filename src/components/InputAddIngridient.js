@@ -24,26 +24,42 @@ export default function InputAddIngridient({
       handleAdd();
     }
   };
+  //const options = name ? [name, ...allIngridients] : allIngridients;
+  const options = allIngridients;
+
   return (
     <>
+      NAME: {name}
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <Autocomplete
           sx={{ width: "100%" }}
           id="free-solo-demo"
           freeSolo
-          options={allIngridients.map((option) => option)}
+          options={options}
+          filterOptions={(options, params) => {
+            if (params.inputValue && !options.includes(params.inputValue)) {
+              return [params.inputValue, ...options];
+            }
+            return options;
+          }}
           onKeyPress={handleKeyPress}
-          onChange={(event, newValue) => {
-            setName(newValue);
+          onChange={(event, newValue, reason) => {
+            console.log(event, newValue, reason);
+            if (reason != "selectOption") {
+              return;
+            }
+            const updated = [...savedIngridients];
+            if (!updated.includes(newValue)) {
+              updated.push(newValue);
+            }
+            setName("");
+            onChange(updated);
           }}
           value={name}
+          selectOnFocus
+          clearOnBlur
           renderInput={(params) => (
-            <TextField
-              {...params}
-              label="Add ingridient"
-              variant="outlined"
-              onChange={(event) => setName(event.target.value)}
-            />
+            <TextField {...params} label="Add ingridient" variant="outlined" />
           )}
         />
         <Box sx={{ p: 1 }}>
