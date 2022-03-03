@@ -11,7 +11,7 @@ export default function InputAddIngridient({
 
   const handleAdd = () => {
     const updated = [...savedIngridients];
-    if (!updated.includes(name)) {
+    if (!updated.includes(name) && name !== "") {
       updated.push(name);
     }
     setName("");
@@ -24,12 +24,11 @@ export default function InputAddIngridient({
       handleAdd();
     }
   };
-  //const options = name ? [name, ...allIngridients] : allIngridients;
+
   const options = allIngridients;
 
   return (
     <>
-      NAME: {name}
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <Autocomplete
           sx={{ width: "100%" }}
@@ -44,7 +43,6 @@ export default function InputAddIngridient({
           }}
           onKeyPress={handleKeyPress}
           onChange={(event, newValue, reason) => {
-            console.log(event, newValue, reason);
             if (reason != "selectOption") {
               return;
             }
@@ -52,21 +50,21 @@ export default function InputAddIngridient({
             if (!updated.includes(newValue)) {
               updated.push(newValue);
             }
-            setName("");
             onChange(updated);
           }}
-          value={name}
-          selectOnFocus
+          onInputChange={(event, newValue, reason) => {
+            if (reason === "reset") {
+              setName("");
+            } else {
+              setName(newValue);
+            }
+          }}
+          inputValue={name}
           clearOnBlur
           renderInput={(params) => (
             <TextField {...params} label="Add ingridient" variant="outlined" />
           )}
         />
-        <Box sx={{ p: 1 }}>
-          <IconButton onClick={handleAdd}>
-            <AddIcon aria-label="add ingridient" sx={{ ml: "auto" }} />
-          </IconButton>
-        </Box>
       </Box>
     </>
   );
