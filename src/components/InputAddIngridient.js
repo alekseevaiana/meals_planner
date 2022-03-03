@@ -9,13 +9,13 @@ export default function InputAddIngridient({
 }) {
   const [name, setName] = useState("");
 
-  const handleAdd = () => {
+  const handleAdd = (value) => {
     const updated = [...savedIngridients];
-    if (!updated.includes(name) && name !== "") {
-      updated.push(name);
+    if (!updated.includes(value) && value !== "") {
+      updated.push(value);
     }
-    setName("");
     onChange(updated);
+    setName("");
   };
 
   const handleKeyPress = (event) => {
@@ -43,14 +43,11 @@ export default function InputAddIngridient({
           }}
           onKeyPress={handleKeyPress}
           onChange={(event, newValue, reason) => {
+            console.log("REASON IN ONCHANGE", reason);
             if (reason != "selectOption") {
               return;
             }
-            const updated = [...savedIngridients];
-            if (!updated.includes(newValue)) {
-              updated.push(newValue);
-            }
-            onChange(updated);
+            handleAdd(newValue);
           }}
           onInputChange={(event, newValue, reason) => {
             if (reason === "reset") {
