@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { getParamId } from "../helper";
+import BackBtn from "./BackBtn";
 
 import MealForm from "./MealForm";
 
@@ -10,15 +11,18 @@ export default function EditMeal({ meals, handleMealChange, allIngridients }) {
   const currentMeal = meals.find((meal) => meal.id === getParamId(params));
 
   return (
-    <Box sx={{ m: 2 }}>
-      <Typography sx={{ mb: 3 }} variant="h6" color="primary.dark">
-        Edit meal
-      </Typography>
-      <MealForm
-        value={currentMeal}
-        onChange={handleMealChange}
-        allIngridients={allIngridients}
-      />
-    </Box>
+    <>
+      <BackBtn direction="/" />
+      <Box sx={{ m: 2 }}>
+        <Typography sx={{ mb: 3 }} variant="h6" color="primary.dark">
+          Edit meal
+        </Typography>
+        <MealForm
+          value={currentMeal}
+          onChange={handleMealChange}
+          allIngridients={allIngridients}
+        />
+      </Box>
+    </>
   );
 }
