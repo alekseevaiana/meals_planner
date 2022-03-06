@@ -21,7 +21,7 @@ export default function InputAddIngridient({
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
-      handleAdd();
+      handleAdd(event.target.value);
     }
   };
 
@@ -43,7 +43,6 @@ export default function InputAddIngridient({
           }}
           onKeyPress={handleKeyPress}
           onChange={(event, newValue, reason) => {
-            console.log("REASON IN ONCHANGE", reason);
             if (reason != "selectOption") {
               return;
             }
