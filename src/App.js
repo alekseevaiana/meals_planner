@@ -90,10 +90,10 @@ function App() {
         pb: 7,
         pt: 3,
         width: "100%",
-        maxWidth: "400px",
+        // maxWidth: "400px",
         ml: "auto",
         mr: "auto",
-        boxShadow: 3,
+        // boxShadow: 3,
       }}
     >
       <Routes>

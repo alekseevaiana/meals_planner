@@ -37,7 +37,10 @@ export default function MealsList({
       <Box sx={{ mt: 1 }}>
         {filteredMeals.map((item, index) => {
           return (
-            <Box sx={{ m: 2, mb: 3 }} key={index}>
+            <Box
+              sx={{ m: 2, mb: 3, maxWidth: "350px", ml: "auto", mr: "auto" }}
+              key={index}
+            >
               <Paper elevation={1}>
                 <Box sx={{ p: 2 }}>
                   <MealsItem

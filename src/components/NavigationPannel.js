@@ -18,7 +18,6 @@ export default function NavigationPannel() {
           position: "fixed",
           bottom: 0,
           width: "100%",
-          maxWidth: "400px",
           borderTop: "1px solid rgba(0, 0, 0, 0.12)",
           boxShadow: 3,
           left: "50%",

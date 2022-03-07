@@ -14,7 +14,7 @@ export default function MealsItem({
     }
   };
   return (
-    <>
+    <Box>
       <Box
         onClick={() => handleOpenMealBtnClick(item.id)}
         sx={{ cursor: "pointer" }}
@@ -39,6 +39,6 @@ export default function MealsItem({
           {actionBtnType(item.inPlan)}
         </Button>
       </Box>
-    </>
+    </Box>
   );
 }
