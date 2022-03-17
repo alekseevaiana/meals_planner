@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { Paper } from "@material-ui/core";
 import React from "react";
 import LocalGroceryStoreRoundedIcon from "@mui/icons-material/LocalGroceryStoreRounded";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { Box } from "@mui/material";
 
 const style = {
   bottomNavigation: {
@@ -19,24 +21,53 @@ const style = {
     pb: 3,
     pt: 2,
   },
+  bottomNavigationLeft: {
+    position: "fixed",
+    top: 0,
+    width: "100px",
+    boxShadow: 3,
+    left: 0,
+    height: "100%",
+    pb: 3,
+    pt: 2,
+    display: "flex",
+    justifyContent: "flex-start",
+    flexDirection: "column",
+    alignItems: "center",
+    zIndex: 2,
+
+    "& a": {
+      height: "60px",
+    },
+  },
 };
 
 export default function NavigationPannel() {
+  const matches = useMediaQuery("(min-width:600px)");
   return (
     <Paper>
-      <BottomNavigation showLabels sx={style.bottomNavigation}>
-        <BottomNavigationAction
-          label="new meal"
-          icon={<AddSharpIcon />}
-          component={Link}
-          to={"/new_meal"}
-        />
-        <BottomNavigationAction
-          label="groceries"
-          icon={<LocalGroceryStoreRoundedIcon />}
-          component={Link}
-          to={"/groceries"}
-        />
+      {/* {console.log("matches: ", matches)} */}
+      <BottomNavigation
+        showLabels
+        sx={matches ? style.bottomNavigationLeft : style.bottomNavigation}
+      >
+        <Box>
+          <BottomNavigationAction
+            label="new meal"
+            icon={<AddSharpIcon />}
+            component={Link}
+            to={"/new_meal"}
+            sx={{ height: "60px" }}
+          />
+        </Box>
+        <Box>
+          <BottomNavigationAction
+            label="groceries"
+            icon={<LocalGroceryStoreRoundedIcon />}
+            component={Link}
+            to={"/groceries"}
+          />
+        </Box>
       </BottomNavigation>
     </Paper>
   );
