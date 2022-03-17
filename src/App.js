@@ -9,6 +9,7 @@ import { Box } from "@mui/system";
 import Groceries from "./components/Groceries";
 import { getFromStorage } from "./helper";
 import { v4 as uuidv4 } from "uuid";
+import NavigationLeftPannel from "./components/NavigationLeftPannel";
 
 export function updateMeals(updatedMeal, updater) {
   if (updatedMeal.id) {
@@ -88,14 +89,12 @@ function App() {
       className="App"
       sx={{
         pb: 7,
-        pt: 3,
         width: "100%",
-        // maxWidth: "400px",
         ml: "auto",
         mr: "auto",
-        // boxShadow: 3,
       }}
     >
+      {/* <NavigationLeftPannel /> */}
       <Routes>
         <Route
           exact
