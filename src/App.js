@@ -94,7 +94,6 @@ function App() {
         mr: "auto",
       }}
     >
-      {/* <NavigationLeftPannel /> */}
       <Routes>
         <Route
           exact

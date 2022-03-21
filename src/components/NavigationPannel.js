@@ -18,8 +18,6 @@ const style = {
     left: "50%",
     transform: "translate(-50%, 0)",
     height: "60px",
-    pb: 3,
-    pt: 2,
   },
   bottomNavigationLeft: {
     position: "fixed",
@@ -46,7 +44,6 @@ export default function NavigationPannel() {
   const matches = useMediaQuery("(min-width:600px)");
   return (
     <Paper>
-      {/* {console.log("matches: ", matches)} */}
       <BottomNavigation
         showLabels
         sx={matches ? style.bottomNavigationLeft : style.bottomNavigation}
@@ -57,7 +54,6 @@ export default function NavigationPannel() {
             icon={<AddSharpIcon />}
             component={Link}
             to={"/new_meal"}
-            sx={{ height: "60px" }}
           />
         </Box>
         <Box>
