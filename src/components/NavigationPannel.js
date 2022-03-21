@@ -35,7 +35,7 @@ const style = {
     zIndex: 2,
 
     "& a": {
-      height: "60px",
+      maxHeight: "70px",
     },
   },
 };
@@ -48,22 +48,19 @@ export default function NavigationPannel() {
         showLabels
         sx={matches ? style.bottomNavigationLeft : style.bottomNavigation}
       >
-        <Box>
-          <BottomNavigationAction
-            label="new meal"
-            icon={<AddSharpIcon />}
-            component={Link}
-            to={"/new_meal"}
-          />
-        </Box>
-        <Box>
-          <BottomNavigationAction
-            label="groceries"
-            icon={<LocalGroceryStoreRoundedIcon />}
-            component={Link}
-            to={"/groceries"}
-          />
-        </Box>
+        <BottomNavigationAction
+          label="new meal"
+          icon={<AddSharpIcon />}
+          component={Link}
+          to={"/new_meal"}
+        />
+
+        <BottomNavigationAction
+          label="groceries"
+          icon={<LocalGroceryStoreRoundedIcon />}
+          component={Link}
+          to={"/groceries"}
+        />
       </BottomNavigation>
     </Paper>
   );
