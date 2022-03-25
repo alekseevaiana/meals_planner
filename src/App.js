@@ -60,7 +60,7 @@ function App() {
   };
 
   const handleMealChange = (updatedMeal) => {
-    updateMeals(mealsData, updatedMeal, setMealsData);
+    updateMeals(updatedMeal, setMealsData);
     storeAddedIngridients(updatedMeal);
     navigate("/");
   };
