@@ -6,7 +6,6 @@ import { Paper } from "@material-ui/core";
 import React from "react";
 import LocalGroceryStoreRoundedIcon from "@mui/icons-material/LocalGroceryStoreRounded";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { Box } from "@mui/material";
 
 const style = {
   bottomNavigation: {

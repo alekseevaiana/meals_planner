@@ -34,7 +34,7 @@ export default function MealsList({
       {allIngridients && (
         <Tags ingridients={allIngridients} onChange={setSearch} />
       )}
-      <Box sx={{ mt: 1 }}>
+      <Box sx={{ mt: 1, display: "flex", flexWrap: "wrap" }}>
         {filteredMeals.map((item, index) => {
           return (
             <Box
