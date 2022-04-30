@@ -49,3 +49,48 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 In the project I use MUI Library  
 [https://mui.com/components/material-icons/?theme=Rounded](https://mui.com/components/material-icons/?theme=Rounded)
+
+## About the project development
+
+### Story behind
+
+The idea of a project came to me when I was trying to organize the recipes, that I cook every day. But I didn’t find a solution to make it clean using tools, that we already have. So, I decided to create my own app that helps not only me but maybe some other people. I talked to my friends, who manage cooking, and I figured out that almost everybody has the same problems as me. In my head I could build an app very simple, I knew what to do, but when I started to draw my first wireframes, I met a challenge. I just didn’t know where to start, and how can I make everything right. At this time I wanted to learn more about design, and I found Google UX Course on Coursera and started it. Everything that I learned there could help me to build my own projects. After a long time of planning, I coded the prototype, tested it with real users, and did a lot of very useful mistakes. Down there you can see my thinking and planning journey more closely.
+The project is in active development, right now I am finding a way to make it look better, and then I am going to code it.
+
+### Problem
+
+- I don’t have a perfect place to store all my recipes, which I already know how to cook
+- When I store somewhere too many recipes, it is challenging to find food by ingredients
+- I buy food but don’t use it completely, because ingredients often go only to one particular recipe
+- I buy a long term food (souces, conserves) and don’t use them
+- I want to eat homemade meals but don’t have too much time to plan them and do grocery shopping too often
+- I don’t want to cook complex meals from recipes apps
+
+My storyboard:
+
+<img src="src/img/storyboard.png" alt="Create item screen" width="550" height="400">
+
+## Challenge
+
+- Create an app where you can create all your meals, search them by ingredients, and put some meals for the plan
+- This app should have a Grocery list (to know what to buy) and a Pantry list (to know what you already have)
+
+## Research
+
+I was looking for apps, that already exist and could solve my problem. What I found:
+
+- a lot of apps with grocery shopping lists and even pantry lists, some of them are great, but no opportunity to create meals from there
+- there are some apps with meals planning, but they take recipes from API and I can’t create my own recipes
+- a lot of apps with just recipes
+
+## Site Map
+
+Here is my Site Map that I created before starting drawing wireframes.
+
+<img src="src/img/site_map.png" alt="Create item screen" width="340" height="400">
+
+## Wireframes
+
+Then I draw wireframes in Figma.
+It looks something like this.
+<img src="src/img/wireframes.png" alt="Create item screen" width="350" height="400">
