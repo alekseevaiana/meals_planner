@@ -93,4 +93,5 @@ Here is my Site Map that I created before starting drawing wireframes.
 
 Then I draw wireframes in Figma.
 It looks something like this.
+
 <img src="src/img/wireframes.png" alt="Create item screen" width="350" height="400">
