@@ -1,7 +1,7 @@
 {
   "name": "meals_planner",
   "version": "0.1.0",
-  "homepage": "https://alekseevaiana.github.io/meals_planner",
+  "homepage": "https://alekseevaiana.github.io/meals_planner_prototype",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.1",
