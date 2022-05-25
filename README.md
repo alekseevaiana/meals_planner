@@ -6,6 +6,20 @@ The App doesn't have a backend yet. The data is stored on the local storage.
 It is developing App in the early stage and it is prototyping for mobile screens for now.  
 In the future, I plan to develop grocery list and pantry list pages to better understand what product do you need to buy for a week.
 
+## Page Navigation
+- [Demo](#demo)  
+- [Main Scripts](#main-scripts) 
+- [About the project development](#about-the-project-development)
+    - [Story behind](#story-behind) 
+    - [Problem](#problem)
+    - [Challenge](#challenge)
+    - [Research](#research)
+    - [Site Map](#site-map)
+    - [Wireframes](#wireframes)
+    - [Prototype and User Testing](#prototype-and-user-testing)
+    - [Other](#other)
+    
+
 ## Demo
 
 https://alekseevaiana.github.io/meals_planner/
@@ -70,12 +84,12 @@ My storyboard:
 
 <img src="src/img/storyboard.png" alt="Create item screen" width="550" height="400">
 
-## Challenge
+### Challenge
 
 - Create an app where you can create all your meals, search them by ingredients, and put some meals for the plan
 - This app should have a Grocery list (to know what to buy) and a Pantry list (to know what you already have)
 
-## Research
+### Research
 
 I was looking for apps, that already exist and could solve my problem. What I found:
 
@@ -83,20 +97,20 @@ I was looking for apps, that already exist and could solve my problem. What I fo
 - there are some apps with meals planning, but they take recipes from API and I can’t create my own recipes
 - a lot of apps with just recipes
 
-## Site Map
+### Site Map
 
 Here is my Site Map that I created before starting drawing wireframes.
 
 <img src="src/img/site_map.png" alt="Create item screen" width="340" height="400">
 
-## Wireframes
+### Wireframes
 
 Then I draw wireframes in Figma.
 It looked something like this.
 
 <img src="src/img/wireframes.png" alt="Create item screen" width="350" height="400">
 
-## Prototype and User Testing
+### Prototype and User Testing
 
 Then I coded prototype, just to give it a try. I user localhost for data storage.
 When I finished basic features, I tried app on my own and asked few users tell me about their experience and thoughts.
@@ -119,6 +133,8 @@ _For a prototype:_
 
 - Wanted oportunity to add groceries from plan and from meal page
 - Noticed that measures are missing, and this is a very important feature
+
+## Other
 
 My next step is creating a hight fidelity design, build backend and frontend.
 I already created data models for backend:
